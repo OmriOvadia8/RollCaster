@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "801234354069",
+    "project_id": "slots-destiny",
+    "storage_bucket": "slots-destiny.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:801234354069:android:6079cc1b7fb0e1c3b7809c",
+        "android_client_info": {
+          "package_name": "com.omri.slotsdestiny"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "801234354069-6hk33ueghdebuidq73c5ridjb1jm50kv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxQtm8IpbxqUHIiCDR8NluOxY7lxqaQl0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "801234354069-6hk33ueghdebuidq73c5ridjb1jm50kv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

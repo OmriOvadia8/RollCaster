@@ -74,3 +74,6 @@ crashlytics-build.properties
 # Ignoring specific Firebase files
 Assets/Firebase/Plugins/x86_64/*
 
+# Ignore google-services.json file
+Assets/google-services.json
+Assets/google-services.json.meta
