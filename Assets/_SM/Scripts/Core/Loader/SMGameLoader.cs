@@ -15,36 +15,19 @@ namespace SM_Core
 
         private void DelayStart()
         {
+            Debug.Log("DelayStart called");
             var manager = new SMManager();
 
             manager.LoadManager(() =>
             {
+                Debug.Log("Inside LoadManager callback");
                 gameLogicLoader.StartLoad(() =>
                 {
+                    Debug.Log("Inside StartLoad callback");
                     SceneManager.LoadScene(1);
+                    Debug.Log("Attempted to load scene 1");
                     Manager.AnalyticsManager.ReportEvent(SMEventType.app_loaded);
-                    ShowMessage();
                 });
-            });
-        }
-
-        private void ShowMessage()
-        {
-            int offlineTime = Manager.TimerManager.GetLastOfflineTimeSeconds();
-
-            WaitForFrame(() =>
-            {
-                if(offlineTime == 0)
-                {
-                    Manager.PopupManager.AddPopupToQueue(SMPopupData.FirstLoginMessage);
-                }
-
-                else
-                {
-                    Manager.PopupManager.AddPopupToQueue(SMPopupData.WelcomeBackMessage);
-                }
-
-                Destroy(gameObject);
             });
         }
     }

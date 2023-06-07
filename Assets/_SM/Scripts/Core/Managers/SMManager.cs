@@ -16,9 +16,9 @@ namespace SM_Core
         public SMAnalyticsManager AnalyticsManager;
         public SMTimeManager TimerManager;
         public SMMonoManager MonoManager;
-        //public SMInAppPurchase PurchaseManager;
-        //public SMAdsManager AdsManager;
-        public SMPopupManager PopupManager;
+        // public SMInAppPurchase PurchaseManager;
+        // public SMAdsManager AdsManager;
+        //public SMPopupManager PopupManager;
 
         public Action onInitAction;
 
@@ -43,7 +43,8 @@ namespace SM_Core
 
         public void InitFirebase(Action onComplete)
         {
-            Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
+            Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
+            {
                 var dependencyStatus = task.Result;
                 if (dependencyStatus == Firebase.DependencyStatus.Available)
                 {
@@ -68,33 +69,33 @@ namespace SM_Core
 
             ConfigManager = new SMConfigManager(delegate
             {
-                EventsManager = new SMEventsManager();
-                SMDebug.Log($"After SMEventsManager");
+            EventsManager = new SMEventsManager();
+            SMDebug.Log($"After SMEventsManager");
 
-                AnalyticsManager = new SMAnalyticsManager();
+            AnalyticsManager = new SMAnalyticsManager();
 
-                FactoryManager = new SMFactoryManager();
-                SMDebug.Log($"After SMFactoryManager");
+            FactoryManager = new SMFactoryManager();
+            SMDebug.Log($"After SMFactoryManager");
 
-                PoolManager = new SMPoolManager();
-                SMDebug.Log($"After SMPoolManager");
+            PoolManager = new SMPoolManager();
+            SMDebug.Log($"After SMPoolManager");
 
-                SaveManager = new SMSaveManager();
-                SMDebug.Log($"After SMSaveManager");
+            SaveManager = new SMSaveManager();
+            SMDebug.Log($"After SMSaveManager");
 
-                SMDebug.Log($"Before Config Manager");
+            SMDebug.Log($"Before Config Manager");
 
-                TimerManager = new SMTimeManager();
+            TimerManager = new SMTimeManager();
 
-                //PurchaseManager = new SMInAppPurchase();
+            // PurchaseManager = new SMInAppPurchase();
 
-                //AdsManager = new SMAdsManager();
+            // AdsManager = new SMAdsManager();
 
-                PopupManager = new SMPopupManager();
+            //PopupManager = new SMPopupManager();
+                SMDebug.Log($"After all managers loaded");
                 onInitAction.Invoke();
-            });
-
+            
+         });
         }
-
     }
 }
