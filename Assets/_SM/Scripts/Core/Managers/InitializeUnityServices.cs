@@ -2,9 +2,9 @@
 //using Unity.Services.Core;
 //using Unity.Services.Core.Environments;
 
-//namespace SM_Core
+//namespace SD_Core
 //{
-//    public class InitializeUnityServices : SMMonoBehaviour
+//    public class InitializeUnityServices : SDMonoBehaviour
 //    {
 //        public string environment = "production";
 
@@ -19,8 +19,8 @@
 //            }
 //            catch (Exception exception)
 //            {
-//                SMDebug.LogException(exception);
-//                Manager.AnalyticsManager.ReportEvent(SMEventType.unity_services_failed);
+//                SDDebug.LogException(exception);
+//                Manager.AnalyticsManager.ReportEvent(SDEventType.unity_services_failed);
 //            }
 //        }
 //        private void Start()
