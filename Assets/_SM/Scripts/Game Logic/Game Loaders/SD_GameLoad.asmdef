@@ -2,8 +2,7 @@
     "name": "GameLoad",
     "rootNamespace": "",
     "references": [
-        "GUID:48da459e637f33641b272a15b4eae145",
-        "GUID:4b2a61fe88e0fe749ba7cd1d3cd2ded5"
+        "GUID:48da459e637f33641b272a15b4eae145"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

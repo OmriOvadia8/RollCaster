@@ -1,0 +1,17 @@
+{
+    "name": "SD_UI",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c7ffc205dd1b32c4bb8d4f677c2c7995",
+        "GUID:48da459e637f33641b272a15b4eae145"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,15 +1,13 @@
 using System;
 using SD_Core;
-using SD_Currency;
 
 namespace SD_GameLoad
 {
     public class SDGameLogic : ISDBaseManager
     {
         public static SDGameLogic Instance;
-
         public SDScoreManager ScoreManager;
-       // public SDStoreManager StoreManager;
+        public SDAbilityDataManager AbilityData;
 
         public SDGameLogic()
         {
@@ -23,9 +21,9 @@ namespace SD_GameLoad
 
         public void LoadManager(Action onComplete)
         {
-            ScoreManager = new SDScoreManager();
-           // StoreManager = new SDStoreManager();
-
+            ScoreManager = new();
+            AbilityData = new();
+            SDDebug.Log($"Ability Data Initialized");
             onComplete.Invoke();
         }
     }

@@ -14,7 +14,7 @@ namespace SD_Core
 
             var saveJson = JsonConvert.SerializeObject(saveData);
 
-            var path = $"{Application.persistentDataPath}/{saveID}.dbSave";
+            var path = $"{Application.persistentDataPath}/{saveID}.sdSave";
 
             File.WriteAllText(path, saveJson);
         }
@@ -28,7 +28,7 @@ namespace SD_Core
             }
 
             var saveID = typeof(T).FullName;
-            var path = $"{Application.persistentDataPath}/{saveID}.dbSave";
+            var path = $"{Application.persistentDataPath}/{saveID}.sdSave";
 
             var saveJson = File.ReadAllText(path);
             var saveData = JsonConvert.DeserializeObject<T>(saveJson);
@@ -40,7 +40,7 @@ namespace SD_Core
         public bool HasData<T>() where T : ISDSaveData
         {
             var saveID = typeof(T).FullName;
-            var path = $"{Application.persistentDataPath}/{saveID}.dbSave";
+            var path = $"{Application.persistentDataPath}/{saveID}.sdSave";
             return File.Exists(path);
         }
     }

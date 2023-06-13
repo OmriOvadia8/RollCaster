@@ -15,13 +15,14 @@ namespace SD_Core
             Object.DontDestroyOnLoad(rootPools);
         }
 
-        public void InitPool(string resourceName, int amount, Transform parentTransform, int maxAmount = 100)
+        public void InitPool(string resourceName, int amount, RectTransform parentTransform, int maxAmount = 100)
         {
             var original = Resources.Load<SDPoolable>(resourceName);
             InitPool(original, amount, parentTransform, maxAmount);
+            SDDebug.Log(original + "LOADED");
         }
 
-        public void InitPool(SDPoolable original, int amount, Transform parentTransform, int maxAmount)
+        public void InitPool(SDPoolable original, int amount, RectTransform parentTransform, int maxAmount)
         {
             SDManager.Instance.FactoryManager.MultiCreateAsync(original, Vector3.zero, amount,
                 (List<SDPoolable> list) =>
@@ -115,7 +116,11 @@ namespace SD_Core
 
     public enum PoolNames
     {
-        MoneyToast = 0,
-        SpendMoneyToast = 1
+        SkullSmoke1 = 1,
+        SkullSmoke2 = 2,
+        SkullSmoke3 = 3,
+        Slashes1 = 4,
+        Slashes2 = 5,
+        Slashes3 = 6,
     }
 }

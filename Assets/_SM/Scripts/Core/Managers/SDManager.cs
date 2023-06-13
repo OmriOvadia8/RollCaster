@@ -16,9 +16,6 @@ namespace SD_Core
         public SDAnalyticsManager AnalyticsManager;
         public SDTimeManager TimerManager;
         public SDMonoManager MonoManager;
-        // public SDInAppPurchase PurchaseManager;
-        // public SDAdsManager AdsManager;
-        //public SDPopupManager PopupManager;
 
         public Action onInitAction;
 
@@ -87,11 +84,6 @@ namespace SD_Core
 
             TimerManager = new SDTimeManager();
 
-            // PurchaseManager = new SDInAppPurchase();
-
-            // AdsManager = new SDAdsManager();
-
-            //PopupManager = new SDPopupManager();
                 SDDebug.Log($"After all managers loaded");
                 onInitAction.Invoke();
             

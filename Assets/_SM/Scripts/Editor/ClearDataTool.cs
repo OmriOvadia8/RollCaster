@@ -6,7 +6,7 @@ namespace DB_Core
 {
     public class ClearDataTool
     {
-        [MenuItem("DB/ClearData")]
+        [MenuItem("SD/ClearData")]
 
         public static void ClearAllDataTool()
         {
@@ -15,7 +15,7 @@ namespace DB_Core
 
             foreach (var file in files)
             {
-                if (file.Contains("DB_Game") || file.Contains("DB_Core"))
+                if (file.Contains("SD"))
                 {
                     File.Delete(file);
                 }
