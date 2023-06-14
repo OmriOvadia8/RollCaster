@@ -1,17 +1,17 @@
 using UnityEngine;
-using SD_Core;
-using System;
 using SD_GameLoad;
 
 namespace SD_Ability
 {
-    public class AbilityUse : SDLogicMonoBehaviour
+    public class SDAbilityAnimationController : SDLogicMonoBehaviour
     {
         [SerializeField] private Animator animator;
+        private readonly int firstAnimLevel = 10;
+        private readonly int secondAnimLevel = 20;
 
         public void UseAbility(string abilityName)
         {
-            var ability = Array.Find(SDAbilityDataManager.Abilities.AbilitiesInfo, a => a.AbilityName == abilityName);
+            var ability = GameLogic.AbilityData.FindAbilityByName(abilityName);
             if (ability != null)
             {
                 string animationName = DetermineAnimation(abilityName, ability.Level);
@@ -23,11 +23,11 @@ namespace SD_Ability
         {
             int animationSuffix;
 
-            if (level <= 10)
+            if (level <= firstAnimLevel)
             {
                 animationSuffix = 1;
             }
-            else if (level <= 20)
+            else if (level <= secondAnimLevel)
             {
                 animationSuffix = 2;
             }
@@ -38,20 +38,15 @@ namespace SD_Ability
 
             return abilityName + animationSuffix;
         }
+    }
 
-        public void IncreaseLevel(string abilityName)
-        {
-            var ability = Array.Find(SDAbilityDataManager.Abilities.AbilitiesInfo, a => a.AbilityName == abilityName);
-            if (ability != null)
-            {
-                ability.Level++;
-                GameLogic.AbilityData.SaveAbilityData();
-                SDDebug.Log(ability.Level);
-            }
-            else
-            {
-                Debug.LogError("Ability not found: " + abilityName);
-            }
-        }
+    public enum AbilityAnimationNames
+    {
+        SkullSmoke1 = 1,
+        SkullSmoke2 = 2,
+        SkullSmoke3 = 3,
+        Slashes1 = 4,
+        Slashes2 = 5,
+        Slashes3 = 6,
     }
 }

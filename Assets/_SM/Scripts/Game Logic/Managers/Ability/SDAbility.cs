@@ -8,7 +8,7 @@ namespace SD_Ability
     public class SDAbility : ScriptableObject
     {
         public string abilityName;
-        public PoolNames[] versions;
+        public AbilityAnimationNames[] versions;
         public Sprite[] levelIcons;
     }
 }

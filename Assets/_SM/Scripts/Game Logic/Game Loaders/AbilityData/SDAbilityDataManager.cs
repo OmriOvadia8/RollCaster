@@ -1,4 +1,5 @@
 using SD_Core;
+using System;
 
 namespace SD_GameLoad
 {
@@ -63,5 +64,10 @@ namespace SD_GameLoad
 
         public void SaveAbilityData() => SDManager.Instance.SaveManager.Save(Abilities);
         #endregion
+
+        public SDAbilityData FindAbilityByName(string abilityName)
+        {
+            return Array.Find(Abilities.AbilitiesInfo, a => a.AbilityName == abilityName);
+        }
     }
 }

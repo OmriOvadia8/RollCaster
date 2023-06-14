@@ -114,13 +114,9 @@ namespace SD_Core
         public int MaxPoolables = 100;
     }
 
+
     public enum PoolNames
     {
-        SkullSmoke1 = 1,
-        SkullSmoke2 = 2,
-        SkullSmoke3 = 3,
-        Slashes1 = 4,
-        Slashes2 = 5,
-        Slashes3 = 6,
+        Toast = 0
     }
 }
