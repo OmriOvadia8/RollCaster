@@ -11,16 +11,18 @@ namespace SD_UI
         [SerializeField] SDAbilityRoller abilityRoller;
         [SerializeField] Image chosenAbilityIcon;
         [SerializeField] SDAbilityAnimationController abilityAnimationController;
+        [SerializeField] Button spinButton;
 
         public void OnRoll() => StartCoroutine(RollCoroutine());
 
         private IEnumerator RollCoroutine()
         {
-            float rollDuration = 1.0f;
+            float rollDuration = 1.5f;
             float elapsedTime = 0.0f;
 
             while (elapsedTime < rollDuration)
             {
+                SpinEnable(false);
                 SDAbilityData randomAbility = abilityRoller.GetRandomAbility();
                 ChosenAbilityIconChange(randomAbility);
                 yield return null;
@@ -30,6 +32,7 @@ namespace SD_UI
             SDAbilityData chosenAbility = abilityRoller.GetRandomAbility();
             ChosenAbilityIconChange(chosenAbility);
             abilityAnimationController.UseAbility(chosenAbility.AbilityName);
+            SpinEnable(true);
         }
 
         private void ChosenAbilityIconChange(SDAbilityData abilityData)
@@ -37,5 +40,7 @@ namespace SD_UI
             Sprite abilityIcon = abilityData.GetIcon();
             chosenAbilityIcon.sprite = abilityIcon;
         }
+
+        private void SpinEnable(bool value) => spinButton.interactable = value;
     }
 }

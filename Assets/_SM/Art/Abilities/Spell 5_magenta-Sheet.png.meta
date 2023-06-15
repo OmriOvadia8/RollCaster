@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -147,7 +147,448 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 332
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e48b27d59fc6124bb2e7756aabb9e97
+      internalID: -77481890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 332
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4be97852d55856a4b94fa2317523e58f
+      internalID: -1172469391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 332
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f4f888df6ca55d45a3f05cfb6a5d6e1
+      internalID: -1353563608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 332
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37ad6926e9da5074eb2374cbf9299d65
+      internalID: -1798068848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 332
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecb7cb16e0282384fbc90b5330979d0c
+      internalID: -267080200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 332
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a296dd509a87d8439805ae87e80480d
+      internalID: 17703264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 332
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a932f309b641fce4bbebb8400ef0b415
+      internalID: -381055706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 166
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94b9affd1e5a7ed4a87533a76898f3b8
+      internalID: -501610640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 166
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ed429340d99b0a42924af63a8cce5c1
+      internalID: -1101021997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 166
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ab733e31af748b4b926d38409491dc7
+      internalID: -870737589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 166
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58706563a3bde7a41bb72d4123e04f20
+      internalID: 73065092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 166
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f5bbf3cdd844ed4081808f326765d41
+      internalID: -1570258321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 166
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13d1bf57099f4a041b9f551de071c675
+      internalID: 788040534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 166
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 238e00de5c61f7d47a45e6ac25b0d3b8
+      internalID: -1211718778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e9bb5e72518e9548b31b476c105740c
+      internalID: 152553598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5dc8b63a6a3d2e429f731402cf5653d
+      internalID: 1331637923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b039e7d6459fde34f80420746105b4a5
+      internalID: -785632954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d95407ed2b1728418c0c7a5f6b85978
+      internalID: -207681838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4d9fe69e1df69744b59db9b6c5b2cd5
+      internalID: 424672303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 775c133c1dd7ee34eb25bdf74aca4262
+      internalID: -114220648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spell 5_magenta-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 160
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d9dce06211e4744fa576267f23e8cfc
+      internalID: -174160092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -158,7 +599,28 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Spell 5_magenta-Sheet_0: -77481890
+      Spell 5_magenta-Sheet_1: -1172469391
+      Spell 5_magenta-Sheet_10: 73065092
+      Spell 5_magenta-Sheet_11: -1570258321
+      Spell 5_magenta-Sheet_12: 788040534
+      Spell 5_magenta-Sheet_13: -1211718778
+      Spell 5_magenta-Sheet_14: 152553598
+      Spell 5_magenta-Sheet_15: 1331637923
+      Spell 5_magenta-Sheet_16: -785632954
+      Spell 5_magenta-Sheet_17: -207681838
+      Spell 5_magenta-Sheet_18: 424672303
+      Spell 5_magenta-Sheet_19: -114220648
+      Spell 5_magenta-Sheet_2: -1353563608
+      Spell 5_magenta-Sheet_20: -174160092
+      Spell 5_magenta-Sheet_3: -1798068848
+      Spell 5_magenta-Sheet_4: -267080200
+      Spell 5_magenta-Sheet_5: 17703264
+      Spell 5_magenta-Sheet_6: -381055706
+      Spell 5_magenta-Sheet_7: -501610640
+      Spell 5_magenta-Sheet_8: -1101021997
+      Spell 5_magenta-Sheet_9: -870737589
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
