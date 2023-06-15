@@ -1,43 +1,20 @@
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
-using Sirenix.OdinInspector;
+using SD_GameLoad;
 
 namespace SD_Ability
 {
-    public class SDAbillityRoller : SerializedMonoBehaviour
+    public class SDAbilityRoller : SDLogicMonoBehaviour
     {
-        [SerializeField] List<Sprite> abilityIcons; // Holds the current level sprites of all abilities
-        [SerializeField] Image abilityImage; // The image component on your ability button
-
-        public void StartRolling()
+        public SDAbilityData RollSkill()
         {
-            StartCoroutine(RollingRoutine());
-        }
+            var abilities = SDAbilityDataManager.Abilities.AbilitiesInfo;
 
-        private IEnumerator RollingRoutine()
-        {
-            float rollTime = 1f; // Duration of the roll in seconds
-            float timer = 0f;
+            var unlockedAbilities = abilities.Where(a => a.IsUnlocked).ToArray();
 
-            while (timer < rollTime)
-            {
-                int index = Random.Range(0, abilityIcons.Count);
-                abilityImage.sprite = abilityIcons[index];
-                yield return null;
-                timer += Time.deltaTime;
-            }
+            int index = Random.Range(0, unlockedAbilities.Length);
 
-            // Lock in the final ability
-            int finalIndex = Random.Range(0, abilityIcons.Count);
-            abilityImage.sprite = abilityIcons[finalIndex];
-        }
-
-        public void ChangeIconInList(Sprite oldAbilitySprite, Sprite newAbilitySprite)
-        {
-            abilityIcons.Remove(oldAbilitySprite);
-            abilityIcons.Add(newAbilitySprite);
+            return unlockedAbilities[index];
         }
     }
 }

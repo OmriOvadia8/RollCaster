@@ -40,13 +40,10 @@ namespace SD_Ability
         }
     }
 
-    public enum AbilityAnimationNames
+    public enum AbilityNames
     {
-        SkullSmoke1 = 1,
-        SkullSmoke2 = 2,
-        SkullSmoke3 = 3,
-        Slashes1 = 4,
-        Slashes2 = 5,
-        Slashes3 = 6,
+        SkullSmoke = 0,
+        Slashes = 1,
+
     }
 }
