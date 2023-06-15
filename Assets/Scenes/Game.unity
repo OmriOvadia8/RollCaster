@@ -2428,6 +2428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityRoller: {fileID: 1218661243}
   chosenAbilityIcon: {fileID: 260771642}
+  abilityAnimationController: {fileID: 149131356}
 --- !u!4 &1485531277
 Transform:
   m_ObjectHideFlags: 0
