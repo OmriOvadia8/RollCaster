@@ -6,28 +6,28 @@ namespace SD_Ability
     public class SDAbilityAnimationController : SDLogicMonoBehaviour
     {
         [SerializeField] private Animator animator;
-        private readonly int firstAnimLevel = 10;
-        private readonly int secondAnimLevel = 20;
+        private readonly int firstAnimLevel = 3;
+        private readonly int secondAnimLevel = 5;
 
-        public void UseAbility(string abilityName)
+        public void UseAbility(string abilityName, int diceOutcome)
         {
             var ability = GameLogic.AbilityData.FindAbilityByName(abilityName);
             if (ability != null)
             {
-                string animationName = DetermineAnimation(abilityName, ability.Level);
+                string animationName = DetermineAnimation(abilityName, diceOutcome);
                 animator.SetTrigger(animationName);
             }
         }
 
-        private string DetermineAnimation(string abilityName, int level)
+        private string DetermineAnimation(string abilityName, int diceOutcome)
         {
             int animationSuffix;
 
-            if (level <= firstAnimLevel)
+            if (diceOutcome <= firstAnimLevel)
             {
                 animationSuffix = 1;
             }
-            else if (level <= secondAnimLevel)
+            else if (diceOutcome <= secondAnimLevel)
             {
                 animationSuffix = 2;
             }
@@ -44,6 +44,5 @@ namespace SD_Ability
     {
         SkullSmoke = 0,
         Slashes = 1,
-
     }
 }

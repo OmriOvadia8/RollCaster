@@ -3,6 +3,7 @@ using UnityEngine;
 using SD_GameLoad;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 
 namespace SD_UI
 {
@@ -10,6 +11,7 @@ namespace SD_UI
     {
         [SerializeField] SDAbilityRoller abilityRoller;
         [SerializeField] Image chosenAbilityIcon;
+        [SerializeField] TMP_Text diceText;
         [SerializeField] SDAbilityAnimationController abilityAnimationController;
         [SerializeField] Button spinButton;
 
@@ -25,13 +27,16 @@ namespace SD_UI
                 SpinEnable(false);
                 SDAbilityData randomAbility = abilityRoller.GetRandomAbility();
                 ChosenAbilityIconChange(randomAbility);
+                diceText.text = abilityRoller.DiceOutcome().ToString();
                 yield return null;
                 elapsedTime += Time.deltaTime;
             }
 
+            int diceOutcome = abilityRoller.DiceOutcome();
+            diceText.text = diceOutcome.ToString();
             SDAbilityData chosenAbility = abilityRoller.GetRandomAbility();
             ChosenAbilityIconChange(chosenAbility);
-            abilityAnimationController.UseAbility(chosenAbility.AbilityName);
+            abilityAnimationController.UseAbility(chosenAbility.AbilityName, diceOutcome);
             SpinEnable(true);
         }
 

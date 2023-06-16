@@ -13,5 +13,11 @@ namespace SD_Ability
             int index = Random.Range(0, unlockedAbilities.Length);
             return unlockedAbilities[index];
         }
+
+        public int DiceOutcome()
+        {
+            int outcome = Random.Range(1, 7);
+            return outcome;
+        }
     }
 }
