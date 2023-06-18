@@ -10,25 +10,7 @@ namespace SD_UI
         [SerializeField] private RectTransform currencyToastPosition;
         [SerializeField] private int textToastAmount = 10;
 
-        private void OnEnable()
-        {
-            Manager.EventsManager.AddListener(SDEventNames.OnAbilityRolled, DisplayTextToast);
-        }
-
-        private void OnDisable()
-        {
-            Manager.EventsManager.RemoveListener(SDEventNames.OnAbilityRolled, DisplayTextToast);
-        }
-
-        private void DisplayTextToast(object obj)
-        {
-            DamageEventDetails details = (DamageEventDetails)obj;
-            InsertToastDetails(details.DamageAmount, PoolNames.DamageToast, details.TextColor, details.TextSize);
-        }
-
-        private void Start() => MoneyToastPoolInitialization();
-
-        public void InsertToastDetails(double amountText, PoolNames poolName, Color color, float size)
+        public void DisplayMoneyToast(double amount, PoolNames poolName)
         {
             var damageTextToast = (SDDamageTextToast)Manager.PoolManager.GetPoolable(poolName);
             Vector3 toastPosition = GetRandomToastPosition();
@@ -36,20 +18,21 @@ namespace SD_UI
 
             switch (poolName)
             {
-                case PoolNames.DamageToast:
-                    damageTextToast.DamageInit(amountText, color, size);
+                case PoolNames.DamageAnim1 or PoolNames.DamageAnim2 or PoolNames.DamageAnim3:
+                    damageTextToast.DamageInit(amount);
                     break;
                 case PoolNames.EarnCurrencyToast:
-                    damageTextToast.EarnInit(amountText);
+                    damageTextToast.EarnInit(amount);
                     break;
                 case PoolNames.SpendCurrencyToast:
-                    damageTextToast.SpendInit(amountText);
+                    damageTextToast.SpendInit(amount);
                     break;
                 default:
                     throw new ArgumentException("Invalid PoolName value");
             }
         }
 
+        private void Start() => MoneyToastPoolInitialization();
 
         private Vector3 GetRandomToastPosition()
         {
@@ -68,7 +51,9 @@ namespace SD_UI
 
         private void MoneyToastPoolInitialization()
         {
-            Manager.PoolManager.InitPool(nameof(PoolNames.DamageToast), textToastAmount, damageToastPosition);
+            Manager.PoolManager.InitPool(nameof(PoolNames.DamageAnim1), textToastAmount, damageToastPosition);
+            Manager.PoolManager.InitPool(nameof(PoolNames.DamageAnim2), textToastAmount, damageToastPosition);
+            Manager.PoolManager.InitPool(nameof(PoolNames.DamageAnim3), textToastAmount, damageToastPosition);
             Manager.PoolManager.InitPool(nameof(PoolNames.EarnCurrencyToast), textToastAmount, currencyToastPosition);
             Manager.PoolManager.InitPool(nameof(PoolNames.SpendCurrencyToast), textToastAmount, currencyToastPosition);
         }

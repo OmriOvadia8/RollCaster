@@ -49,5 +49,9 @@ namespace SD_Core
         OfflineTimeRefreshed,
         OnCurrencySet,
         OnAbilityRolled,
+        AbilityAnim1,
+        AbilityAnim2,
+        AbilityAnim3,
+        AbilityAnim,
     }
 }

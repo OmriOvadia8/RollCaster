@@ -34,4 +34,16 @@ namespace SD_GameLoad
     {
         public SDAbilityData[] AbilitiesInfo { get; set; }
     }
+
+    [Serializable]
+    public enum AbilityNames
+    {
+        SkullSmoke = 0,
+        Slashes = 1,
+        SmokeExplosion = 2,
+        SkullExplosion = 3,
+        Scratch = 4,
+        Tornado = 5,
+        Tentacle = 6,
+    }
 }

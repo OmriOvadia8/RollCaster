@@ -117,8 +117,10 @@ namespace SD_Core
 
     public enum PoolNames
     {
-        DamageToast = 0,
-        EarnCurrencyToast = 1,
-        SpendCurrencyToast = 2
+        DamageAnim1 = 0,
+        DamageAnim2 = 1,
+        DamageAnim3 = 2,
+        EarnCurrencyToast = 3,
+        SpendCurrencyToast = 4
     }
 }

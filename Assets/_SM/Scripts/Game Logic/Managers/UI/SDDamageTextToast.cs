@@ -8,18 +8,11 @@ namespace SD_UI
     public class SDDamageTextToast : SDPoolable
     {
         [SerializeField] TMP_Text amountText;
-
         [SerializeField] private float tweenTime = 1f;
         [SerializeField] private Vector3 moveAmount = Vector3.up;
 
-        private Tween fadeTween;
-        private Tween moveTween;
-        private Tween scaleTween;
-
-        public void DamageInit(double amount, Color color, float size)
+        public void DamageInit(double amount)
         {
-            amountText.color = color;
-            amountText.fontSize = size;
             amountText.text = $"{amount.ToReadableNumber()}";
             DoAnimation();
         }
@@ -36,15 +29,16 @@ namespace SD_UI
             DoAnimation();
         }
 
-        public void DoAnimation()
+        private void DoAnimation()
         {
+            Debug.Log("DoAnimation called");
             transform.DOKill();
-            amountText.color = new Color(amountText.color.r, amountText.color.g, amountText.color.b, 1f); 
+            amountText.color = new Color(amountText.color.r, amountText.color.g, amountText.color.b, 1f);
 
-            transform.localScale = Vector3.one; 
-            Vector3 startPos = transform.localPosition; 
+            transform.localScale = Vector3.one;
+            Vector3 startPos = transform.localPosition;
 
-            Vector3 endPos = startPos + new Vector3(0, moveAmount.y, 0); 
+            Vector3 endPos = startPos + moveAmount;
             transform.DOLocalMove(endPos, tweenTime).SetEase(Ease.OutSine);
 
             DOVirtual.Float(1, 0, tweenTime, alpha =>
@@ -52,20 +46,15 @@ namespace SD_UI
                 var color = amountText.color;
                 color.a = alpha;
                 amountText.color = color;
-            }).OnComplete(ReturnToPool);
+            })
+            .OnStart(() => Debug.Log("Tween started"))
+            .OnComplete(ReturnToPool);
         }
 
-        public void HideImmediately()
-        {
-            fadeTween?.Kill();
-            moveTween?.Kill();
-            scaleTween?.Kill();
 
-            ReturnToPool();
-        }
-
-        public void ReturnToPool()
+        private void ReturnToPool()
         {
+            Debug.Log("ReturnToPool called");
             Manager.PoolManager.ReturnPoolable(this);
         }
 

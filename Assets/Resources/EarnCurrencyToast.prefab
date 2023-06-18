@@ -148,35 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04709d6e314896644ac3a0e4e0998d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolName: 1
+  poolName: 3
   amountText: {fileID: 3399275554259246676}
   tweenTime: 1
   moveAmount: {x: 0, y: 1, z: 0}
-  fadeTarget: 0
-  scaleStart: 0
-  scaleEnd: 1
-  easeTypeMove: 1
-  fadeEase:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
