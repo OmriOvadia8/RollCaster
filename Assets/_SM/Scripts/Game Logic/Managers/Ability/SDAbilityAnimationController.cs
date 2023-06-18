@@ -39,10 +39,4 @@ namespace SD_Ability
             return abilityName + animationSuffix;
         }
     }
-
-    public enum AbilityNames
-    {
-        SkullSmoke = 0,
-        Slashes = 1,
-    }
 }

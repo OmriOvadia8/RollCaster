@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9899d0758188ae4c94a2d12cef5534f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeAdjustments: {x: 0, y: 0}
+  sizeAdjustments: {x: 160, y: 166}
   animationHolder: {fileID: 0}
 --- !u!1102 &-8145254215297966671
 AnimatorState:
