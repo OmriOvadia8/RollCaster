@@ -21,8 +21,10 @@ namespace SD_UI
             PoolNames poolName = eventData.Item2;
 
             var ability = GameLogic.AbilityData.FindAbilityByName(abilityName.ToString());
-            var damage = ability.Damage;
+            double damage = ability.Damage * (int)poolName;
+
             toastingManager.DisplayMoneyToast(damage, poolName);
         }
+
     }
 }

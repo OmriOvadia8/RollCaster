@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04709d6e314896644ac3a0e4e0998d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolName: 2
+  poolName: 3
   amountText: {fileID: 3399275554259246676}
   tweenTime: 1
   moveAmount: {x: 0, y: 0.3, z: 0}

@@ -53,5 +53,7 @@ namespace SD_Core
         AbilityAnim2,
         AbilityAnim3,
         AbilityAnim,
+        CastDamage,
+        OnDamageToast,
     }
 }
