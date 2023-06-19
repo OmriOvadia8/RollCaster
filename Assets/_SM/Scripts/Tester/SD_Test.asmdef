@@ -1,0 +1,20 @@
+{
+    "name": "SD_Test",
+    "rootNamespace": "",
+    "references": [
+        "GUID:693bcb9840b09c9499fec96fd41e50a2",
+        "GUID:807242217be2b274abf2f3cf2df42348",
+        "GUID:48da459e637f33641b272a15b4eae145",
+        "GUID:1ba7c363163474b4bb721c3278e33f0f",
+        "GUID:b687c5a9c5fd96c4497de67798fb3649"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
