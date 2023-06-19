@@ -4,7 +4,7 @@ namespace SD_GameLoad
 {
     public class SDBossDataManager
     {
-        public static SDCurrentBoss CurrentBoss;
+        public SDCurrentBoss CurrentBoss { get; private set; }
         public const string BOSS_CONFIG = "current_boss";
 
         public SDBossDataManager() => LoadCurrentBossData();

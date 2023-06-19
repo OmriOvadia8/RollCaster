@@ -9,6 +9,7 @@ namespace SD_GameLoad
         public SDScoreManager ScoreManager;
         public SDAbilityDataManager AbilityData;
         public SDBossDataManager CurrentBossData;
+        public SDBossController BossController;
 
         public SDGameLogic()
         {
@@ -25,8 +26,11 @@ namespace SD_GameLoad
             ScoreManager = new();
             AbilityData = new();
             CurrentBossData = new();
+            BossController = new();
+
             SDDebug.Log($"GameLogic Data Initialized");
             onComplete.Invoke();
         }
     }
 }
+
