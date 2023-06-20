@@ -33,6 +33,5 @@ namespace SD_Core
             yield return null;
             onComplete?.Invoke();
         }
-
     }
 }
