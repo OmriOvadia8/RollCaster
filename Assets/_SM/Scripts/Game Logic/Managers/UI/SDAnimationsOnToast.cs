@@ -1,23 +1,28 @@
 using SD_Core;
-using System;
 using SD_GameLoad;
+using UnityEngine;
 
 namespace SD_UI
 {
-    public class SDAnimationsOnToast : SDMonoBehaviour
+    public class SDAnimationsOnToast : SDLogicMonoBehaviour
     {
-        public void OnAnimation1(AbilityNames abilityName)
+        [SerializeField] SDToastingManager toastingManager;
+
+        public void OnAnimation1(AbilityNames abilityName) => HandleAnimation(abilityName, PoolNames.DamageAnim1);
+
+        public void OnAnimation2(AbilityNames abilityName)=> HandleAnimation(abilityName, PoolNames.DamageAnim2);
+
+        public void OnAnimation3(AbilityNames abilityName) => HandleAnimation(abilityName, PoolNames.DamageAnim3);
+
+        private void HandleAnimation(AbilityNames abilityName, PoolNames poolName)
         {
-            Manager.EventsManager.InvokeEvent(SDEventNames.AbilityAnim, Tuple.Create(abilityName, PoolNames.DamageAnim1));
-        }
+            var ability = GameLogic.AbilityData.FindAbilityByName(abilityName.ToString());
+            double damage = ability.Damage * (int)poolName;
 
-        public void OnAnimation2(AbilityNames abilityName) => Manager.EventsManager.InvokeEvent(SDEventNames.AbilityAnim, Tuple.Create(abilityName, PoolNames.DamageAnim2));
-
-        public void OnAnimation3(AbilityNames abilityName) => Manager.EventsManager.InvokeEvent(SDEventNames.AbilityAnim, Tuple.Create(abilityName, PoolNames.DamageAnim3));
-
-        public void AnimationTest(AbilityNames abilityName, double damage)
-        {
-            Manager.EventsManager.InvokeEvent(SDEventNames.AbilityAnim, Tuple.Create(abilityName, damage, PoolNames.DamageAnim1));
+            toastingManager.DisplayMoneyToast(damage, poolName);
+            GameLogic.BossController.DamageBoss(damage);
+            SDDebug.Log(GameLogic.CurrentBossData.CurrentBoss.BossInfo.CurrentHp);
+            SDDebug.Log(GameLogic.CurrentBossData.CurrentBoss.BossInfo.Level);
         }
     }
 }

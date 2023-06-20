@@ -19,7 +19,7 @@ namespace SD_UI
 
         private IEnumerator RollCoroutine()
         {
-            float rollDuration = 1.5f;
+            float rollDuration = 2f;
             float elapsedTime = 0.0f;
 
             while (elapsedTime < rollDuration)

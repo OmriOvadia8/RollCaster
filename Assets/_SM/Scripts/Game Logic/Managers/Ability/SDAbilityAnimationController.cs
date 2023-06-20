@@ -15,13 +15,8 @@ namespace SD_Ability
             var ability = GameLogic.AbilityData.FindAbilityByName(abilityName);
             if (ability != null)
             {
-                double abilityDamage = ability.Damage * diceOutcome;
                 string animationName = DetermineAnimation(abilityName, diceOutcome);
                 animator.SetTrigger(animationName);
-
-                GameLogic.BossController.DamageBoss(abilityDamage);
-                SDDebug.Log(abilityDamage);
-                SDDebug.Log(GameLogic.CurrentBossData.CurrentBoss.BossInfo.CurrentHp);
             }
         }
 
