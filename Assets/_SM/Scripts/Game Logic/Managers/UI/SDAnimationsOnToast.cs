@@ -21,6 +21,13 @@ namespace SD_UI
 
             toastingManager.DisplayMoneyToast(damage, poolName);
             GameLogic.BossController.DamageBoss(damage);
+
+            if (GameLogic.CurrentBossData.CurrentBoss.BossInfo.CurrentHp <= 0)
+            {
+                InvokeEvent(SDEventNames.KillBoss, null);
+            }
+
+            InvokeEvent(SDEventNames.HurtBoss, null);
             SDDebug.Log(GameLogic.CurrentBossData.CurrentBoss.BossInfo.CurrentHp);
             SDDebug.Log(GameLogic.CurrentBossData.CurrentBoss.BossInfo.Level);
         }

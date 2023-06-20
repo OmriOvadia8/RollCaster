@@ -55,5 +55,7 @@ namespace SD_Core
         AbilityAnim,
         CastDamage,
         OnDamageToast,
+        HurtBoss,
+        KillBoss,
     }
 }

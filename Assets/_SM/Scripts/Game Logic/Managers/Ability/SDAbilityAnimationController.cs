@@ -17,6 +17,7 @@ namespace SD_Ability
             {
                 string animationName = DetermineAnimation(abilityName, diceOutcome);
                 animator.SetTrigger(animationName);
+
             }
         }
 

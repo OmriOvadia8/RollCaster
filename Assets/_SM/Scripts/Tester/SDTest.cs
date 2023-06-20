@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using SD_GameLoad;
 using SD_Core;
 using UnityEngine.UI;
-using DG.Tweening;
+using SD_UI;
 
 namespace SD_Test
 {
@@ -14,6 +12,7 @@ namespace SD_Test
         // Update is called once per frame
 
         [SerializeField] Image healthBar;
+        [SerializeField] SDBossAnimationsController bossAnim;
         public double currentHealth = 1000;
         public double maxHealth = 1000;
 
@@ -35,7 +34,13 @@ namespace SD_Test
 
             if(Input.GetKeyDown(KeyCode.C))
             {
+                bossAnim.HurtBoss();
                 TakeDamage(100);
+            }
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                bossAnim.KillBoss();
             }
         }
 

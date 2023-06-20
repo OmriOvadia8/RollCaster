@@ -575,11 +575,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 994856922}
+  - {fileID: 1432351402}
   - {fileID: 958607404}
   - {fileID: 2060425345}
   - {fileID: 830532830}
   - {fileID: 260771641}
-  - {fileID: 1432351402}
   - {fileID: 1775045525}
   - {fileID: 519983879}
   m_Father: {fileID: 0}
@@ -1150,7 +1150,7 @@ RectTransform:
   m_GameObject: {fileID: 958607403}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.0000005, y: 7.0000005, z: 7.0000005}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 597432474}
@@ -1158,8 +1158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 495}
-  m_SizeDelta: {x: 120, y: 145}
+  m_AnchoredPosition: {x: 0, y: 348}
+  m_SizeDelta: {x: 128, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &958607405
 Animator:
@@ -1645,8 +1645,10 @@ GameObject:
   - component: {fileID: 1432351402}
   - component: {fileID: 1432351404}
   - component: {fileID: 1432351403}
+  - component: {fileID: 1432351405}
+  - component: {fileID: 1432351406}
   m_Layer: 5
-  m_Name: angel
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1661,7 +1663,7 @@ RectTransform:
   m_GameObject: {fileID: 1432351401}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 597432474}
@@ -1669,7 +1671,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 344}
+  m_AnchoredPosition: {x: 0, y: 246}
   m_SizeDelta: {x: 102, y: 154}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1432351403
@@ -1692,7 +1694,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 956901626, guid: 5b309b2a435d4d348b10ddd1d7087655, type: 3}
+  m_Sprite: {fileID: 424745016, guid: 5b309b2a435d4d348b10ddd1d7087655, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1710,6 +1712,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432351401}
   m_CullTransparentMesh: 1
+--- !u!95 &1432351405
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432351401}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 12f6490afc2f297469171f1721ce591c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1432351406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432351401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 675af593c9773aa4f9a8b4bcd25fd289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossAnimator: {fileID: 1432351405}
 --- !u!1 &1485531275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1743,6 +1779,7 @@ MonoBehaviour:
   chosenAbilityIcon: {fileID: 1422162940}
   diceText: {fileID: 890830204}
   abilityAnimationController: {fileID: 149131356}
+  bossAnim: {fileID: 0}
   spinButton: {fileID: 856280454}
 --- !u!4 &1485531277
 Transform:
@@ -1866,6 +1903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 341152121}
+  bossAnim: {fileID: 1432351406}
   currentHealth: 1000
   maxHealth: 1000
 --- !u!4 &1933424334
