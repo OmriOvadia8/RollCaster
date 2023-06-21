@@ -13,7 +13,6 @@ namespace SD_UI
         [SerializeField] Image chosenAbilityIcon;
         [SerializeField] TMP_Text diceText;
         [SerializeField] SDAbilityAnimationController abilityAnimationController;
-        [SerializeField] SDBossAnimationsController bossAnim;
         [SerializeField] Button spinButton;
 
         public void OnRoll() => StartCoroutine(RollCoroutine());

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Boss Spawn
+  m_Name: Yellow Boss Spawn
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -60,8 +60,6 @@ AnimationClip:
       value: {fileID: -1195903252, guid: 5b309b2a435d4d348b10ddd1d7087655, type: 3}
     - time: 1.5833334
       value: {fileID: -441414158, guid: 5b309b2a435d4d348b10ddd1d7087655, type: 3}
-    - time: 1.6666666
-      value: {fileID: -441414158, guid: 5b309b2a435d4d348b10ddd1d7087655, type: 3}
     attribute: m_Sprite
     path: 
     classID: 114
@@ -104,13 +102,12 @@ AnimationClip:
     - {fileID: -1856337892, guid: 5b309b2a435d4d348b10ddd1d7087655, type: 3}
     - {fileID: -1195903252, guid: 5b309b2a435d4d348b10ddd1d7087655, type: 3}
     - {fileID: -441414158, guid: 5b309b2a435d4d348b10ddd1d7087655, type: 3}
-    - {fileID: -441414158, guid: 5b309b2a435d4d348b10ddd1d7087655, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.6833333
+    m_StopTime: 1.6
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

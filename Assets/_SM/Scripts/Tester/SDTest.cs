@@ -2,7 +2,7 @@ using UnityEngine;
 using SD_GameLoad;
 using SD_Core;
 using UnityEngine.UI;
-using SD_UI;
+using SD_Boss;
 
 namespace SD_Test
 {
@@ -18,9 +18,9 @@ namespace SD_Test
 
         private void Start()
         {
-            SDDebug.Log(GameLogic.CurrentBossData.CurrentBoss.BossInfo.Level);
-            SDDebug.Log(GameLogic.CurrentBossData.CurrentBoss.BossInfo.CurrentHp);
-            SDDebug.Log(GameLogic.CurrentBossData.CurrentBoss.BossInfo.TotalHp);
+            SDDebug.Log(CurrentBossInfo.Level);
+            SDDebug.Log(CurrentBossInfo.CurrentHp);
+            SDDebug.Log(CurrentBossInfo.TotalHp);
         }
 
         void Update()
@@ -28,14 +28,16 @@ namespace SD_Test
             if (Input.GetKeyDown(KeyCode.W))
             {
                 GameLogic.BossController.DamageBoss(100);
-                SDDebug.Log(GameLogic.CurrentBossData.CurrentBoss.BossInfo.CurrentHp);
-                SDDebug.Log(GameLogic.CurrentBossData.CurrentBoss.BossInfo.Level);
+                SDDebug.Log(CurrentBossInfo.CurrentHp);
+                SDDebug.Log(CurrentBossInfo.Level);
+                SDDebug.Log(CurrentBossInfo.IsAlive);
             }
 
             if(Input.GetKeyDown(KeyCode.C))
             {
                 bossAnim.HurtBoss();
                 TakeDamage(100);
+                SDDebug.Log("index" + CurrentBossInfo.Index);
             }
 
             if (Input.GetKeyDown(KeyCode.X))

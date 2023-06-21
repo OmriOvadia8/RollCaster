@@ -57,5 +57,6 @@ namespace SD_Core
         OnDamageToast,
         HurtBoss,
         KillBoss,
+        SpawnBoss,
     }
 }
