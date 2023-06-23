@@ -70,14 +70,16 @@ namespace SD_Boss
                 CurrentBossInfo.Index = bossIndex;
                 bossComponents[bossIndex].gameObject.SetActive(true);
                 CurrentBossInfo.IsAlive = true;
+                InvokeEvent(SDEventNames.SpinEnable, true);
             }
         }
 
         private IEnumerator HideBoss(float timeToHide, int index)
         {
             CurrentBossInfo.IsAlive = false;
-            yield return new WaitForSeconds(timeToHide);
+            InvokeEvent(SDEventNames.SpinEnable, false);
 
+            yield return new WaitForSeconds(timeToHide);
             bossComponents[index].gameObject.SetActive(false);
         }
 

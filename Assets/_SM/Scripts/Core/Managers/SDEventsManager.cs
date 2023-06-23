@@ -58,5 +58,8 @@ namespace SD_Core
         HurtBoss,
         KillBoss,
         SpawnBoss,
+        SpinEnable,
+        UpdateLevelUI,
+        UpdateHealthUI,
     }
 }

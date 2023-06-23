@@ -5,6 +5,10 @@ namespace SD_GameLoad
 {
     public class SDBossController
     {
+        private const double BOSS_LEVEL_INCREASE_FACTOR = 2;
+        private const double NORMAL_LEVEL_INCREASE_FACTOR = 1.1;
+        private const double POST_BOSS_LEVEL_DECREASE_FACTOR = 0.7;
+        private const int BOSS_LEVEL_INTERVAL = 10;
         private SDBossDataManager BossDataManager => SDGameLogic.Instance.CurrentBossData;
 
         public void DamageBoss(double damage)
@@ -35,14 +39,34 @@ namespace SD_GameLoad
                 Debug.LogError("No current boss data available.");
                 return;
             }
+
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.KillBoss, null);
             currentBoss.Index++;
             currentBoss.Level++;
-            currentBoss.TotalHp *= 1.1;
-            currentBoss.CurrentHp = currentBoss.TotalHp;
-            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.SpawnBoss, null);
 
+            currentBoss.TotalHp = CalculateNewHp(currentBoss);
+            currentBoss.CurrentHp = currentBoss.TotalHp;
+
+            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.SpawnBoss, null);
+            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateLevelUI, null);
             BossDataManager.SaveCurrentBossData();
         }
+
+        private double CalculateNewHp(SDBossData currentBoss)
+        {
+            if (currentBoss.Level % BOSS_LEVEL_INTERVAL == 0)
+            {
+                return currentBoss.TotalHp * BOSS_LEVEL_INCREASE_FACTOR;
+            }
+            else if (currentBoss.Level % BOSS_LEVEL_INTERVAL == 1)
+            {
+                return currentBoss.TotalHp * POST_BOSS_LEVEL_DECREASE_FACTOR;
+            }
+            else
+            {
+                return currentBoss.TotalHp * NORMAL_LEVEL_INCREASE_FACTOR;
+            }
+        }
+
     }
 }

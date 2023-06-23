@@ -30,7 +30,7 @@ namespace SD_GameLoad
         private void LoadSavedCurrentBossData(SDCurrentBoss data)
         {
             CurrentBoss = data;
-            if (CurrentBoss != null && CurrentBoss.BossInfo != null)
+            if (CurrentBoss?.BossInfo != null)
             {
                 SDDebug.Log("Boss Data Loaded: HP :" + CurrentBoss.BossInfo.TotalHp);
             }
@@ -44,7 +44,7 @@ namespace SD_GameLoad
         private void OnConfigLoaded(SDCurrentBoss configData)
         {
             CurrentBoss = configData;
-            if (CurrentBoss != null && CurrentBoss.BossInfo != null)
+            if (CurrentBoss?.BossInfo != null)
             {
                 SDDebug.Log("Boss Data Loaded: HP :" + CurrentBoss.BossInfo.TotalHp);
             }

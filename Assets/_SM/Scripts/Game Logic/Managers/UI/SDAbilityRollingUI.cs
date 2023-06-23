@@ -3,7 +3,7 @@ using UnityEngine;
 using SD_GameLoad;
 using UnityEngine.UI;
 using System.Collections;
-using TMPro;
+using SD_Core;
 
 namespace SD_UI
 {
@@ -11,9 +11,21 @@ namespace SD_UI
     {
         [SerializeField] SDAbilityRoller abilityRoller;
         [SerializeField] Image chosenAbilityIcon;
-        [SerializeField] TMP_Text diceText;
+        [SerializeField] Image diceImage;
+        [SerializeField] Sprite[] diceResultSprite;
         [SerializeField] SDAbilityAnimationController abilityAnimationController;
         [SerializeField] Button spinButton;
+        [SerializeField] AbilityUIDataSO[] abilityIcons;
+
+        private void OnEnable()
+        {
+            AddListener(SDEventNames.SpinEnable, SpinEnable);
+        }
+
+        private void OnDisable()
+        {
+            RemoveListener(SDEventNames.SpinEnable, SpinEnable);
+        }
 
         public void OnRoll() => StartCoroutine(RollCoroutine());
 
@@ -26,14 +38,15 @@ namespace SD_UI
             {
                 SpinEnable(false);
                 SDAbilityData randomAbility = abilityRoller.GetRandomAbility();
-                ChosenAbilityIconChange(randomAbility);
-                diceText.text = abilityRoller.DiceOutcome().ToString();
+                int diceRolling = abilityRoller.DiceOutcome();
+                chosenAbilityIcon.sprite = abilityIcons[diceRolling].abilityIcon;
+                diceImage.sprite = diceResultSprite[diceRolling - 1];
                 yield return null;
                 elapsedTime += Time.deltaTime;
             }
 
             int diceOutcome = abilityRoller.DiceOutcome();
-            diceText.text = diceOutcome.ToString();
+            diceImage.sprite = diceResultSprite[diceOutcome - 1];
             SDAbilityData chosenAbility = abilityRoller.GetRandomAbility();
             ChosenAbilityIconChange(chosenAbility);
             abilityAnimationController.UseAbility(chosenAbility.AbilityName, diceOutcome);
@@ -46,6 +59,10 @@ namespace SD_UI
             chosenAbilityIcon.sprite = abilityIcon;
         }
 
-        private void SpinEnable(bool value) => spinButton.interactable = value;
+        private void SpinEnable(object boolValue)
+        {
+            bool value = (bool)boolValue;
+            spinButton.interactable = value;
+        }
     }
 }

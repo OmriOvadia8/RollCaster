@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c994aa1d02c3d0145b61164ddae5e6d9
+guid: ae8913bdb1effec40bf1c8c7b3d19058
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -147,7 +147,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Dice 1_0
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 495
+        width: 277
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a625f75cd6a15448ad43dfa4f418e78
+      internalID: -407604097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice 1_1
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 495
+        width: 276
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59edc09b9d2b7d8429a05dd7e7d3fbeb
+      internalID: -1426277876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice 1_2
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 495
+        width: 277
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5d765a58ab738f4c8c08aa00f32c6b5
+      internalID: 1312465064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice 1_3
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 188
+        width: 277
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca8f84860b254764192ed0ac1c060431
+      internalID: 2086163688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice 1_4
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 188
+        width: 276
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 691bb84a8b0c7164dbcc0a4e589a2915
+      internalID: -13090254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice 1_5
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 188
+        width: 277
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a0d057fadcce934898781d69e7b2a67
+      internalID: 905281905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -158,7 +284,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dice 1_0: -407604097
+      Dice 1_1: -1426277876
+      Dice 1_2: 1312465064
+      Dice 1_3: 2086163688
+      Dice 1_4: -13090254
+      Dice 1_5: 905281905
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

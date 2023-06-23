@@ -22,6 +22,8 @@ namespace SD_UI
             toastingManager.DisplayMoneyToast(damage, poolName);
             GameLogic.BossController.DamageBoss(damage);
 
+            InvokeEvent(SDEventNames.UpdateHealthUI, null);
+
             SDDebug.Log(CurrentBossInfo.CurrentHp);
             SDDebug.Log(CurrentBossInfo.Level);
         }
