@@ -3,6 +3,7 @@ using UnityEngine;
 using SD_GameLoad;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 using SD_Core;
 
 namespace SD_UI
@@ -15,7 +16,6 @@ namespace SD_UI
         [SerializeField] Sprite[] diceResultSprite;
         [SerializeField] SDAbilityAnimationController abilityAnimationController;
         [SerializeField] Button spinButton;
-        [SerializeField] AbilityUIDataSO[] abilityIcons;
 
         private void OnEnable()
         {
@@ -38,8 +38,8 @@ namespace SD_UI
             {
                 SpinEnable(false);
                 SDAbilityData randomAbility = abilityRoller.GetRandomAbility();
+                ChosenAbilityIconChange(randomAbility);
                 int diceRolling = abilityRoller.DiceOutcome();
-                chosenAbilityIcon.sprite = abilityIcons[diceRolling].abilityIcon;
                 diceImage.sprite = diceResultSprite[diceRolling - 1];
                 yield return null;
                 elapsedTime += Time.deltaTime;
