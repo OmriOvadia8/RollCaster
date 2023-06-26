@@ -1,6 +1,5 @@
 using UnityEngine;
 using SD_GameLoad;
-using SD_Core;
 
 namespace SD_Ability
 {
@@ -17,7 +16,7 @@ namespace SD_Ability
             {
                 string animationName = DetermineAnimation(abilityName, diceOutcome);
                 animator.SetTrigger(animationName);
-
+                GameLogic.PlayerController.DecreaseRoll();
             }
         }
 

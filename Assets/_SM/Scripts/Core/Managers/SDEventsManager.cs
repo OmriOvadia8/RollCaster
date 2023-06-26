@@ -61,5 +61,8 @@ namespace SD_Core
         SpinEnable,
         UpdateLevelUI,
         UpdateHealthUI,
+        UpdateXpUI,
+        UpdateRollsUI,
+        BossCrownVisibility,
     }
 }

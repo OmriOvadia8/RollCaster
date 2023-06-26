@@ -15,7 +15,6 @@ namespace SD_Boss
         private bool isDead;
         private List<int> bossIndices = new List<int> { 0, 1};
         private int specialBossIndex = 2;
-        private const int SPECIAL_BOSS_LEVEL = 10;
 
         private void OnEnable()
         {
@@ -85,7 +84,7 @@ namespace SD_Boss
 
         private int GetBossIndex()
         {
-            if (CurrentBossInfo.Level % SPECIAL_BOSS_LEVEL == 0)
+            if (CurrentBossInfo.Level % CurrentBossInfo.SpecialBossLevel == 0)
             {
                 return specialBossIndex;
             }

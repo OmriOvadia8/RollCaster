@@ -42,8 +42,16 @@ namespace SD_Test
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                bossAnim.KillBoss();
+                SDDebug.Log(GameLogic.Player.PlayerData.PlayerInfo.Level);
+                SDDebug.Log(GameLogic.Player.PlayerData.PlayerInfo.TotalXpRequired);
+                SDDebug.Log(GameLogic.Player.PlayerData.PlayerInfo.CurrentXp);
             }
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+                GameLogic.Player.PlayerData.PlayerInfo.Level++;
+                GameLogic.Player.SavePlayerData();
+            }
+
         }
 
         public void TakeDamage(double damage)
