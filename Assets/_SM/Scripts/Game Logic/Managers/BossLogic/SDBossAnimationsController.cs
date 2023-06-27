@@ -70,6 +70,7 @@ namespace SD_Boss
                 bossComponents[bossIndex].gameObject.SetActive(true);
                 CurrentBossInfo.IsAlive = true;
                 InvokeEvent(SDEventNames.SpinEnable, true);
+                InvokeEvent(SDEventNames.BossCrownVisibility, null);
             }
         }
 

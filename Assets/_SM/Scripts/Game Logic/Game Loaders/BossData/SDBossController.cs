@@ -51,7 +51,6 @@ namespace SD_GameLoad
 
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.SpawnBoss, null);
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateLevelUI, null);
-            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.BossCrownVisibility, null);
             BossDataManager.SaveCurrentBossData();
         }
 

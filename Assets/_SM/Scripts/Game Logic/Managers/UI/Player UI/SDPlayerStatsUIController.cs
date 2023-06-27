@@ -40,7 +40,7 @@ namespace SD_UI
 
             levelText.text = $"Lv. {currentLevel}";
             xpBar.fillAmount = (float)(currentXP / totalXP);
-            xpAmountText.text = $"{currentXP} / {totalXP}";
+            xpAmountText.text = $"{currentXP.ToReadableNumber()} / {totalXP.ToReadableNumber()}";
         }
 
         private void UpdateRollsBar(object obj = null)

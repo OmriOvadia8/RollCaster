@@ -11,7 +11,7 @@ namespace SD_UI
         [SerializeField] TMP_Text levelText;
         [SerializeField] TMP_Text hpText;
         [SerializeField] Image healthBar;
-        [SerializeField] Image bossCrown;
+        [SerializeField] GameObject bossCrown;
 
         private void OnEnable()
         {
@@ -51,7 +51,7 @@ namespace SD_UI
 
             if (CurrentBossInfo.Level % CurrentBossInfo.SpecialBossLevel == 0)
             {
-                bossCrown.gameObject.SetActive(true);
+                bossCrown.SetActive(true);
             }
         }
     }
