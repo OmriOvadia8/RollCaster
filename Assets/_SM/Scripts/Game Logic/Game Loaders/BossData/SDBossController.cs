@@ -26,13 +26,13 @@ namespace SD_GameLoad
 
             if (currentBoss.CurrentHp <= 0)
             {
-                ProgressToNextLevel();
+                ProgressToNextBossLevel();
             }
 
             BossDataManager.SaveCurrentBossData();
         }
 
-        private void ProgressToNextLevel()
+        private void ProgressToNextBossLevel()
         {
             var currentBoss = BossDataManager.CurrentBoss?.BossInfo;
             if (currentBoss == null)
@@ -49,8 +49,15 @@ namespace SD_GameLoad
             currentBoss.CurrentHp = currentBoss.TotalHp;
             currentBoss.XP *= XP_INCREASE;
 
+            if(!SDGameLogic.Instance.PlayerController.GetLevelUpFlag())
+            {
+                SDGameLogic.Instance.PlayerController.EarnAbilityPoints(PointsEvent.BossKill);
+            }
+
+            SDGameLogic.Instance.PlayerController.SetLevelUpFlag(false);
+            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateAllUpgradesButtons, null);
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.SpawnBoss, null);
-            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateLevelUI, null);
+            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateBossLevelUI, null);
             BossDataManager.SaveCurrentBossData();
         }
 
@@ -69,6 +76,5 @@ namespace SD_GameLoad
                 return currentBoss.TotalHp * NORMAL_LEVEL_INCREASE_FACTOR;
             }
         }
-
     }
 }

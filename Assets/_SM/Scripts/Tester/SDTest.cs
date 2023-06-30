@@ -9,8 +9,6 @@ namespace SD_Test
 #if UNITY_EDITOR
     public class SDTest : SDLogicMonoBehaviour
     {
-        // Update is called once per frame
-
         [SerializeField] Image healthBar;
         [SerializeField] SDBossAnimationsController bossAnim;
         public double currentHealth = 1000;
@@ -48,10 +46,15 @@ namespace SD_Test
             }
             if (Input.GetKeyDown(KeyCode.V))
             {
-                GameLogic.Player.PlayerData.PlayerInfo.Level++;
+                GameLogic.PlayerController.AddPlayerXP(500);
                 GameLogic.Player.SavePlayerData();
             }
-
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                GameLogic.PlayerController.EarnAbilityPoints(PointsEvent.BossKill);
+                SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.CheckUnlockAbility, GameLogic.Player.PlayerData.PlayerInfo.Level);
+                GameLogic.Player.SavePlayerData();
+            }
         }
 
         public void TakeDamage(double damage)

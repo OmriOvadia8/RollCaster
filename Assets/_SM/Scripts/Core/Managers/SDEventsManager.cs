@@ -59,10 +59,16 @@ namespace SD_Core
         KillBoss,
         SpawnBoss,
         SpinEnable,
-        UpdateLevelUI,
+        UpdateBossLevelUI,
         UpdateHealthUI,
         UpdateXpUI,
         UpdateRollsUI,
         BossCrownVisibility,
+        UpdateAbilityPtsUI,
+        UpdateAbilityUpgradeButtons,
+        UpdateAbilityUnlockedUI,
+        UpdateAbilityUpgradeUI,
+        CheckUnlockAbility,
+        UpdateAllUpgradesButtons,
     }
 }

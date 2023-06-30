@@ -81,7 +81,7 @@ namespace SD_Core
         {
             if (score < 1000000)
             {
-                return string.Format("{0:N0}", score); // N0 format: with commas and no decimal places
+                return string.Format("{0:N0}", score);
             }
             else
             {
@@ -108,13 +108,20 @@ namespace SD_Core
                 }
             }
 
-            string format = "F" + decimalPlaces.ToString();
-            result = score.ToString(format);
+            if (i == 0)
+            {
+                result = $"{Math.Floor(score)}";
+            }
+            else
+            {
+                string format = "F" + decimalPlaces.ToString();
+                result = score.ToString(format);
 
-            // Remove trailing zeros
-            result = result.IndexOf('.') < 0 ? result : result.TrimEnd('0').TrimEnd('.');
+                result = result.IndexOf('.') < 0 ? result : result.TrimEnd('0').TrimEnd('.');
+            }
 
             return $"{result}{scoreNames[i]}";
         }
+
     }
 }

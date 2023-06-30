@@ -11,14 +11,18 @@ namespace SD_GameLoad
         public int Level { get; set; }
         public double Damage { get; set; }
         public bool IsUnlocked { get; set; }
+        public int UpgradeCost { get; set; }
+        public int UnlockLevel { get; set; }
         public string IconResourcePath { get; set; }
 
-        public SDAbilityData(string abilityName, int level, double damage, bool isUnlocked, string iconResourcePath)
+        public SDAbilityData(string abilityName, int level, double damage, bool isUnlocked, int upgradeCost, int unlockLevel, string iconResourcePath)
         {
             AbilityName = abilityName;
             Level = level;
             Damage = damage;
             IsUnlocked = isUnlocked;
+            UpgradeCost = upgradeCost;
+            UnlockLevel = unlockLevel;
             IconResourcePath = iconResourcePath;
         }
 
@@ -27,6 +31,14 @@ namespace SD_GameLoad
             return Resources.Load<Sprite>(IconResourcePath);
         }
 
+        public void UpgradeAbility()
+        {
+            double damagePercentageIncrease = 1.05;
+            Level++;
+            Damage *= damagePercentageIncrease;
+        }
+
+        public void UnlockAbility() => IsUnlocked = true;
     }
 
     [Serializable]

@@ -15,14 +15,14 @@ namespace SD_UI
 
         private void OnEnable()
         {
-            AddListener(SDEventNames.UpdateLevelUI, UpdateLevelText);
+            AddListener(SDEventNames.UpdateBossLevelUI, UpdateLevelText);
             AddListener(SDEventNames.UpdateHealthUI, UpdateHealthBar);
             AddListener(SDEventNames.BossCrownVisibility, BossCrownVisibility);
         }
 
         private void OnDisable()
         {
-            RemoveListener(SDEventNames.UpdateLevelUI, UpdateLevelText);
+            RemoveListener(SDEventNames.UpdateBossLevelUI, UpdateLevelText);
             RemoveListener(SDEventNames.UpdateHealthUI, UpdateHealthBar);
             RemoveListener(SDEventNames.BossCrownVisibility, BossCrownVisibility);
         }
@@ -34,7 +34,7 @@ namespace SD_UI
             BossCrownVisibility();
         }
 
-        private void UpdateLevelText(object obj = null) => levelText.text = $"Boss Lv. {CurrentBossInfo.Level}";
+        private void UpdateLevelText(object obj = null) => levelText.text = $"Boss Lv. {CurrentBossInfo.Level:N0}";
 
         private void UpdateHealthBar(object obj = null)
         {
