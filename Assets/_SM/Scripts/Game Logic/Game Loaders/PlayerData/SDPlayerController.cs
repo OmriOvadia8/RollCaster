@@ -55,6 +55,7 @@ namespace SD_GameLoad
             }
 
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateRollsUI, null);
+            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.CheckRollsForSpin, null);
 
             SDGameLogic.Instance.Player.SavePlayerData();
         }
@@ -67,6 +68,7 @@ namespace SD_GameLoad
             }
 
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateRollsUI, null);
+            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.CheckRollsForSpin, null);
 
             SDGameLogic.Instance.Player.SavePlayerData();
         }

@@ -3,7 +3,6 @@ using UnityEngine;
 using SD_GameLoad;
 using UnityEngine.UI;
 using System.Collections;
-using TMPro;
 using SD_Core;
 
 namespace SD_UI
@@ -20,19 +19,23 @@ namespace SD_UI
         private void OnEnable()
         {
             AddListener(SDEventNames.SpinEnable, SpinEnable);
+            AddListener(SDEventNames.CheckRollsForSpin, CheckRollsForSpin);
         }
 
         private void OnDisable()
         {
             RemoveListener(SDEventNames.SpinEnable, SpinEnable);
+            RemoveListener(SDEventNames.CheckRollsForSpin, CheckRollsForSpin);
         }
+
+        private void Start() => CheckRollsForSpin();
 
         public void OnRoll() => StartCoroutine(RollCoroutine());
 
         private IEnumerator RollCoroutine()
         {
-            float rollDuration = 1.5f;
-            float elapsedTime = 0.0f;
+            float rollDuration = 1.75f;
+            float elapsedTime = 0;
             float waitTime = 0.075f;
 
             while (elapsedTime < rollDuration)
@@ -51,14 +54,23 @@ namespace SD_UI
             SDAbilityData chosenAbility = abilityRoller.GetRandomAbility();
             ChosenAbilityIconChange(chosenAbility);
             abilityAnimationController.UseAbility(chosenAbility.AbilityName, diceOutcome);
-            SpinEnable(true);
+            CheckRollsForSpin();
         }
-
 
         private void ChosenAbilityIconChange(SDAbilityData abilityData)
         {
             Sprite abilityIcon = abilityData.GetIcon();
             chosenAbilityIcon.sprite = abilityIcon;
+        }
+
+        private void CheckRollsForSpin(object obj = null)
+        {
+            SpinEnable(false);
+
+            if (GameLogic.Player.PlayerData.PlayerInfo.CurrentRolls > 0)
+            {
+                SpinEnable(true);
+            }
         }
 
         private void SpinEnable(object boolValue)

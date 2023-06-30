@@ -70,5 +70,6 @@ namespace SD_Core
         UpdateAbilityUpgradeUI,
         CheckUnlockAbility,
         UpdateAllUpgradesButtons,
+        CheckRollsForSpin,
     }
 }
