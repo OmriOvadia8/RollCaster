@@ -35,7 +35,6 @@ namespace SD_UI
 
         private void UpdateUpgradeAbilityUI(object abilityData)
         {
-            int currentPoints = GameLogic.PlayerController.GetAbilityPointsAmount();
             AbilityNames abilityName = (AbilityNames)abilityData;
             int index = (int)abilityName;
             var ability = GameLogic.AbilityData.FindAbilityByName(abilityName.ToString());
@@ -45,8 +44,7 @@ namespace SD_UI
                 abilityLevelText[index].text = $"Lv. {ability.Level:N0}";
                 abilityDamageText[index].text = $"Dmg. {ability.Damage.ToReadableNumber()}";
                 abilityUpgradeCostText[index].text = $"-{ability.UpgradeCost:N0}";
-
-                UpdateButtonInteractability(ability, index, currentPoints);
+                UpdateAllButtonsInteractability();
             }
         }
 

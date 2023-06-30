@@ -4,25 +4,25 @@ namespace SD_GameLoad
 {
     public class SDPlayerController
     {
-        private const float TOTAL_XP_MULTIPLIER_INCREASE = 1.5f;
+        private const double TOTAL_XP_MULTIPLIER_INCREASE = 1.2;
         private bool hasLeveledUp;
         private SDPlayerData PlayerInfo => SDGameLogic.Instance.Player.PlayerData.PlayerInfo;
 
         #region Player Leveling
-
         public void AddPlayerXP(double xp)
         {
             PlayerInfo.CurrentXp += xp;
+            SDDebug.Log($"Before Level Up: CurrentXp = {PlayerInfo.CurrentXp}, TotalXpRequired = {PlayerInfo.TotalXpRequired}");
 
             if (PlayerInfo.CurrentXp >= PlayerInfo.TotalXpRequired)
             {
                 double tempXPRequired = PlayerInfo.TotalXpRequired;
                 PlayerLevelUp();
                 PlayerInfo.CurrentXp -= tempXPRequired;
+                SDDebug.Log($"After Level Up: CurrentXp = {PlayerInfo.CurrentXp}, TotalXpRequired = {PlayerInfo.TotalXpRequired}, tempXPRequired = {tempXPRequired}");
             }
 
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateXpUI, null);
-
             SDGameLogic.Instance.Player.SavePlayerData();
         }
 
@@ -31,7 +31,7 @@ namespace SD_GameLoad
             SetLevelUpFlag(true);
             PlayerInfo.Level++;
             UpdateTotalXPRequired();
-            EarnAbilityPoints(PointsEvent.LevelUp);
+            EarnAbilityPoints(PointsEarnTypes.LevelUp);
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.CheckUnlockAbility, PlayerInfo.Level);
             SDGameLogic.Instance.Player.SavePlayerData();
         }
@@ -75,14 +75,14 @@ namespace SD_GameLoad
 
         #region Player Points
 
-        public void EarnAbilityPoints(PointsEvent pointsEvent)
+        public void EarnAbilityPoints(PointsEarnTypes pointsEvent)
         {
             switch (pointsEvent)
             {
-                case PointsEvent.LevelUp:
+                case PointsEarnTypes.LevelUp:
                     PlayerInfo.AbilityPoints += 10;
                     break;
-                case PointsEvent.BossKill:
+                case PointsEarnTypes.BossKill:
                     int points = UnityEngine.Random.Range(1, 4);
                     PlayerInfo.AbilityPoints += points;
                     break;
@@ -115,7 +115,7 @@ namespace SD_GameLoad
 
     }
 
-    public enum PointsEvent
+    public enum PointsEarnTypes
     {
         LevelUp,
         BossKill

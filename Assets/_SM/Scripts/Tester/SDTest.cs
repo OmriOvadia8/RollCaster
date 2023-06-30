@@ -34,7 +34,7 @@ namespace SD_Test
             if(Input.GetKeyDown(KeyCode.C))
             {
                 bossAnim.HurtBoss();
-                TakeDamage(100);
+                TakeDamage(CurrentBossInfo.CurrentHp - (CurrentBossInfo.CurrentHp -1));
                 SDDebug.Log("index" + CurrentBossInfo.Index);
             }
 
@@ -51,7 +51,7 @@ namespace SD_Test
             }
             if (Input.GetKeyDown(KeyCode.T))
             {
-                GameLogic.PlayerController.EarnAbilityPoints(PointsEvent.BossKill);
+                GameLogic.PlayerController.EarnAbilityPoints(PointsEarnTypes.BossKill);
                 SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.CheckUnlockAbility, GameLogic.Player.PlayerData.PlayerInfo.Level);
                 GameLogic.Player.SavePlayerData();
             }

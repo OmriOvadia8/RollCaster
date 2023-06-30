@@ -8,7 +8,8 @@ namespace SD_GameLoad
         private const double BOSS_LEVEL_INCREASE_FACTOR = 2;
         private const double NORMAL_LEVEL_INCREASE_FACTOR = 1.1;
         private const double POST_BOSS_LEVEL_DECREASE_FACTOR = 0.7;
-        private const int XP_INCREASE = 2;
+        private const double BOSS_XP_INCREASE_FACTOR = 1.03;
+        private const double SPECIAL_BOSS_XP_INCREASE_FACTOR = 1.22;
 
         private SDBossDataManager BossDataManager => SDGameLogic.Instance.CurrentBossData;
 
@@ -47,11 +48,11 @@ namespace SD_GameLoad
             currentBoss.Level++;
             currentBoss.TotalHp = CalculateNewHp(currentBoss);
             currentBoss.CurrentHp = currentBoss.TotalHp;
-            currentBoss.XP *= XP_INCREASE;
+            currentBoss.XP = CalculateNewXp(currentBoss);
 
-            if(!SDGameLogic.Instance.PlayerController.GetLevelUpFlag())
+            if (!SDGameLogic.Instance.PlayerController.GetLevelUpFlag())
             {
-                SDGameLogic.Instance.PlayerController.EarnAbilityPoints(PointsEvent.BossKill);
+                SDGameLogic.Instance.PlayerController.EarnAbilityPoints(PointsEarnTypes.BossKill);
             }
 
             SDGameLogic.Instance.PlayerController.SetLevelUpFlag(false);
@@ -74,6 +75,18 @@ namespace SD_GameLoad
             else
             {
                 return currentBoss.TotalHp * NORMAL_LEVEL_INCREASE_FACTOR;
+            }
+        }
+
+        private double CalculateNewXp(SDBossData currentBoss)
+        {
+            if (currentBoss.Level % currentBoss.SpecialBossLevel == 0)
+            {
+                return currentBoss.XP * SPECIAL_BOSS_XP_INCREASE_FACTOR;
+            }
+            else
+            {
+                return currentBoss.XP * BOSS_XP_INCREASE_FACTOR;
             }
         }
     }

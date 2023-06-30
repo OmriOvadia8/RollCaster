@@ -31,8 +31,9 @@ namespace SD_UI
 
         private IEnumerator RollCoroutine()
         {
-            float rollDuration = 2f;
+            float rollDuration = 1.5f;
             float elapsedTime = 0.0f;
+            float waitTime = 0.075f;
 
             while (elapsedTime < rollDuration)
             {
@@ -41,8 +42,8 @@ namespace SD_UI
                 ChosenAbilityIconChange(randomAbility);
                 int diceRolling = abilityRoller.DiceOutcome();
                 diceImage.sprite = diceResultSprite[diceRolling - 1];
-                yield return null;
-                elapsedTime += Time.deltaTime;
+                yield return new WaitForSeconds(waitTime);
+                elapsedTime += waitTime;
             }
 
             int diceOutcome = abilityRoller.DiceOutcome();
@@ -52,6 +53,7 @@ namespace SD_UI
             abilityAnimationController.UseAbility(chosenAbility.AbilityName, diceOutcome);
             SpinEnable(true);
         }
+
 
         private void ChosenAbilityIconChange(SDAbilityData abilityData)
         {
