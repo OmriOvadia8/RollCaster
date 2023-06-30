@@ -41,7 +41,7 @@ namespace SD_Ability
                     continue;
                 }
 
-                if (ability.IsUnlocked && level >= ability.UnlockLevel)
+                if (!ability.IsUnlocked && level >= ability.UnlockLevel)
                 {
                     ability.UnlockAbility();
                     GameLogic.AbilityData.SaveAbilityData();
@@ -51,5 +51,6 @@ namespace SD_Ability
                 }
             }
         }
+
     }
 }

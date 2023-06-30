@@ -66,6 +66,8 @@ namespace SD_UI
 
                 UpdateButtonInteractability(ability, index, currentPoints);
             }
+
+            SDDebug.Log($"{ability}'s unlock is {ability.IsUnlocked}");
         }
 
         private void UpdateAllButtonsInteractability(object obj = null)
