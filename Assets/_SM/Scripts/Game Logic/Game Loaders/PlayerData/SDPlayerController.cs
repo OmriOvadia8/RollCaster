@@ -102,10 +102,6 @@ namespace SD_GameLoad
                 SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateAbilityPtsUI, null);
                 SDGameLogic.Instance.Player.SavePlayerData();
             }
-            else
-            {
-                SDDebug.Log("Player has not enough points");
-            }
         }
 
         public int GetAbilityPointsAmount()
@@ -113,8 +109,12 @@ namespace SD_GameLoad
             return PlayerInfo.AbilityPoints;
         }
 
-        #endregion
+        public bool CanSpendAbilityPoints(int abilityPoints)
+        {
+            return PlayerInfo.AbilityPoints >= abilityPoints;
+        }
 
+        #endregion
     }
 
     public enum PointsEarnTypes

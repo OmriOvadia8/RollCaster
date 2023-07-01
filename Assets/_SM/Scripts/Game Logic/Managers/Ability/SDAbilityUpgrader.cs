@@ -9,24 +9,27 @@ namespace SD_Ability
         private void OnEnable() => AddListener(SDEventNames.CheckUnlockAbility, CheckForAbilityUnlock);
 
         private void OnDisable() => RemoveListener(SDEventNames.CheckUnlockAbility, CheckForAbilityUnlock);
-
         public void UpgradeAbility(string abilityName)
         {
-            var playerInfo = GameLogic.Player.PlayerData.PlayerInfo;
-            int currentPoints = playerInfo.AbilityPoints;
             var ability = GameLogic.AbilityData.FindAbilityByName(abilityName);
 
-            if (ability != null && currentPoints >= ability.UpgradeCost)
+            if (ability != null)
             {
-                playerInfo.AbilityPoints -= ability.UpgradeCost;
-                ability.UpgradeAbility();
-                InvokeEvent(SDEventNames.UpdateAbilityPtsUI, null);
-                InvokeEvent(SDEventNames.UpdateAbilityUpgradeUI, Enum.Parse(typeof(AbilityNames), ability.AbilityName));
-                GameLogic.Player.SavePlayerData();
-                GameLogic.AbilityData.SaveAbilityData();
-                SDDebug.Log($"{ability.Level} in {ability.AbilityName} with {ability.Damage}");
+                if (GameLogic.PlayerController.CanSpendAbilityPoints(ability.UpgradeCost))
+                {
+                    ability.UpgradeAbility();
+                    GameLogic.PlayerController.SpendAbilityPoints(ability.UpgradeCost);
+                    InvokeEvent(SDEventNames.UpdateAbilityUpgradeUI, Enum.Parse(typeof(AbilityNames), ability.AbilityName));
+                    GameLogic.AbilityData.SaveAbilityData();
+                    SDDebug.Log($"{ability.Level} in {ability.AbilityName} with {ability.Damage}");
+                }
+                else
+                {
+                    SDDebug.Log("Player does not have enough ability points to upgrade this ability.");
+                }
             }
         }
+
 
         private void CheckForAbilityUnlock(object playerLevel)
         {

@@ -43,7 +43,7 @@ namespace SD_UI
             {
                 abilityLevelText[index].text = $"Lv. {ability.Level:N0}";
                 abilityDamageText[index].text = $"Dmg. {ability.Damage.ToReadableNumber()}";
-                abilityUpgradeCostText[index].text = $"-{ability.UpgradeCost:N0}";
+                abilityUpgradeCostText[index].text = $"{ability.UpgradeCost:N0}";
                 UpdateAllButtonsInteractability();
             }
         }

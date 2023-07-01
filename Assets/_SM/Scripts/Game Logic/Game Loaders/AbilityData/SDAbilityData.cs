@@ -34,8 +34,13 @@ namespace SD_GameLoad
         public void UpgradeAbility()
         {
             double damagePercentageIncrease = 1.05;
-            Level++;
             Damage *= damagePercentageIncrease;
+
+            Level++;
+            if (Level % 10 == 0)
+            {
+                UpgradeCost++;
+            }
         }
 
         public void UnlockAbility() => IsUnlocked = true;
