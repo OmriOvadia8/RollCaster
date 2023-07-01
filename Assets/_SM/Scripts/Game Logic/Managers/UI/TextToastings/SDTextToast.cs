@@ -5,27 +5,23 @@ using SD_Core;
 
 namespace SD_UI
 {
-    public class SDDamageTextToast : SDPoolable
+    public class SDTextToast : SDPoolable
     {
         [SerializeField] TMP_Text amountText;
         [SerializeField] private float tweenTime = 1f;
         [SerializeField] private Vector3 moveAmount = Vector3.up;
 
-        public void DamageInit(double amount)
+        public void TextDetails(string suffix, double? amount)
         {
-            amountText.text = $"{amount.ToReadableNumber()}";
-            DoAnimation();
-        }
+            if (amount.HasValue)
+            {
+                amountText.text = suffix + amount.Value.ToReadableNumber();
+            }
+            else
+            {
+                amountText.text = suffix;
+            }
 
-        public void EarnInit(double amount)
-        {
-            amountText.text = $"+{amount.ToReadableNumber()}";
-            DoAnimation();
-        }
-
-        public void SpendInit(double amount)
-        {
-            amountText.text = $"-{amount.ToReadableNumber()}";
             DoAnimation();
         }
 
@@ -50,7 +46,6 @@ namespace SD_UI
             .OnStart(() => Debug.Log("Tween started"))
             .OnComplete(ReturnToPool);
         }
-
 
         private void ReturnToPool()
         {

@@ -221,7 +221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4537345184672080146}
   m_Layer: 5
-  m_Name: SPToast
+  m_Name: EarnPointsToast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

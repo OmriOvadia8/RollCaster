@@ -7,25 +7,37 @@ namespace SD_UI
     public class SDToastingManager : SDMonoBehaviour
     {
         [SerializeField] private RectTransform damageToastPosition;
-        [SerializeField] private RectTransform currencyToastPosition;
+        [SerializeField] private RectTransform pointsToastPosition;
+        [SerializeField] private RectTransform levelupToastPosition;
+        [SerializeField] private RectTransform XPToastPosition;
         [SerializeField] private int textToastAmount = 10;
 
-        public void DisplayMoneyToast(double amount, PoolNames poolName)
+        public void DisplayTextToast(double amount, PoolNames poolName)
         {
-            var damageTextToast = (SDDamageTextToast)Manager.PoolManager.GetPoolable(poolName);
-            Vector3 toastPosition = GetRandomToastPosition();
-            damageTextToast.transform.position = toastPosition;
+            var textToast = (SDTextToast)Manager.PoolManager.GetPoolable(poolName);
 
             switch (poolName)
             {
                 case PoolNames.DamageAnim1 or PoolNames.DamageAnim2 or PoolNames.DamageAnim3:
-                    damageTextToast.DamageInit(amount);
+                    Vector3 toastPosition = GetRandomToastPosition();
+                    textToast.transform.position = toastPosition;
+                    textToast.TextDetails("", amount);
                     break;
-                case PoolNames.EarnCurrencyToast:
-                    damageTextToast.EarnInit(amount);
+                case PoolNames.EarnPointsToast:
+                    textToast.transform.position = pointsToastPosition.position;
+                    textToast.TextDetails("+" , amount);
                     break;
-                case PoolNames.SpendCurrencyToast:
-                    damageTextToast.SpendInit(amount);
+                case PoolNames.SpendPointsToast:
+                    textToast.transform.position = pointsToastPosition.position;
+                    textToast.TextDetails("-" , amount);
+                    break;
+                case PoolNames.LevelUpToast:
+                    textToast.transform.position = levelupToastPosition.position;
+                    textToast.TextDetails("LEVEL UP!", null);
+                    break;
+                case PoolNames.XPToast:
+                    textToast.transform.position = XPToastPosition.position;
+                    textToast.TextDetails("+", amount);
                     break;
                 default:
                     throw new ArgumentException("Invalid PoolName value");
@@ -36,7 +48,6 @@ namespace SD_UI
 
         private Vector3 GetRandomToastPosition()
         {
-            // Define bounds for random position
             float minX = -1f;
             float maxX = 1f;
             float minY = -1f;
@@ -48,14 +59,15 @@ namespace SD_UI
             return new Vector3(damageToastPosition.position.x + x, damageToastPosition.position.y + y, damageToastPosition.position.z);
         }
 
-
         private void MoneyToastPoolInitialization()
         {
             Manager.PoolManager.InitPool(nameof(PoolNames.DamageAnim1), textToastAmount, damageToastPosition);
             Manager.PoolManager.InitPool(nameof(PoolNames.DamageAnim2), textToastAmount, damageToastPosition);
             Manager.PoolManager.InitPool(nameof(PoolNames.DamageAnim3), textToastAmount, damageToastPosition);
-            Manager.PoolManager.InitPool(nameof(PoolNames.EarnCurrencyToast), textToastAmount, currencyToastPosition);
-            Manager.PoolManager.InitPool(nameof(PoolNames.SpendCurrencyToast), textToastAmount, currencyToastPosition);
+            Manager.PoolManager.InitPool(nameof(PoolNames.EarnPointsToast), textToastAmount, pointsToastPosition);
+            Manager.PoolManager.InitPool(nameof(PoolNames.SpendPointsToast), textToastAmount, pointsToastPosition);
+            Manager.PoolManager.InitPool(nameof(PoolNames.XPToast), textToastAmount, XPToastPosition);
+            Manager.PoolManager.InitPool(nameof(PoolNames.LevelUpToast), textToastAmount, levelupToastPosition);
         }
     }
 }

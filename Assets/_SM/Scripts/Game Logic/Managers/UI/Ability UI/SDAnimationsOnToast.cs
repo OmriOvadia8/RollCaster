@@ -19,7 +19,7 @@ namespace SD_UI
             var ability = GameLogic.AbilityData.FindAbilityByName(abilityName.ToString());
             double damage = ability.Damage * (int)poolName;
 
-            toastingManager.DisplayMoneyToast(damage, poolName);
+            toastingManager.DisplayTextToast(damage, poolName);
             GameLogic.BossController.DamageBoss(damage);
 
             InvokeEvent(SDEventNames.UpdateHealthUI, null);

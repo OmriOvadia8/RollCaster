@@ -120,7 +120,9 @@ namespace SD_Core
         DamageAnim1 = 1,
         DamageAnim2 = 2,
         DamageAnim3 = 3,
-        EarnCurrencyToast = 4,
-        SpendCurrencyToast = 5
+        LevelUpToast = 6,
+        XPToast = 7,
+        EarnPointsToast = 8,
+        SpendPointsToast = 9
     }
 }
