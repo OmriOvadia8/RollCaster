@@ -3,6 +3,7 @@ using SD_GameLoad;
 using SD_Core;
 using UnityEngine.UI;
 using SD_Boss;
+using SD_UI;
 
 namespace SD_Test
 {
@@ -11,6 +12,7 @@ namespace SD_Test
     {
         [SerializeField] Image healthBar;
         [SerializeField] SDBossAnimationsController bossAnim;
+        [SerializeField] SDToastingManager toasting;
         public double currentHealth = 1000;
         public double maxHealth = 1000;
 
@@ -54,6 +56,14 @@ namespace SD_Test
                 GameLogic.PlayerController.EarnAbilityPoints(PointsEarnTypes.BossKill);
                 SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.CheckUnlockAbility, GameLogic.Player.PlayerData.PlayerInfo.Level);
                 GameLogic.Player.SavePlayerData();
+            }
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                toasting.DisplayTextToast(10, PoolNames.XPToast);
+                toasting.DisplayTextToast(10, PoolNames.EarnPointsToast);
+                toasting.DisplayTextToast(10, PoolNames.SpendPointsToast);
+                toasting.DisplayTextToast(10, PoolNames.LevelUpToast);
             }
         }
 

@@ -71,5 +71,9 @@ namespace SD_Core
         CheckUnlockAbility,
         UpdateAllUpgradesButtons,
         CheckRollsForSpin,
+        SpendPointsToast,
+        EarnPointsToast,
+        XPToast,
+        LvlUpToast,
     }
 }

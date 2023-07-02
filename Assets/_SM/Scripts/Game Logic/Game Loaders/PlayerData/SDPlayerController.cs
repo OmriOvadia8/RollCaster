@@ -5,6 +5,7 @@ namespace SD_GameLoad
     public class SDPlayerController
     {
         private const double TOTAL_XP_MULTIPLIER_INCREASE = 1.2;
+        private const int EXTRA_BOSS_POINTS = 10;
         private bool hasLeveledUp;
         private SDPlayerData PlayerInfo => SDGameLogic.Instance.Player.PlayerData.PlayerInfo;
 
@@ -22,6 +23,7 @@ namespace SD_GameLoad
                 SDDebug.Log($"After Level Up: CurrentXp = {PlayerInfo.CurrentXp}, TotalXpRequired = {PlayerInfo.TotalXpRequired}, tempXPRequired = {tempXPRequired}");
             }
 
+            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.XPToast, xp);
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateXpUI, null);
             SDGameLogic.Instance.Player.SavePlayerData();
         }
@@ -32,6 +34,7 @@ namespace SD_GameLoad
             PlayerInfo.Level++;
             UpdateTotalXPRequired();
             EarnAbilityPoints(PointsEarnTypes.LevelUp);
+            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.LvlUpToast, null);
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.CheckUnlockAbility, PlayerInfo.Level);
             SDGameLogic.Instance.Player.SavePlayerData();
         }
@@ -82,11 +85,13 @@ namespace SD_GameLoad
             switch (pointsEvent)
             {
                 case PointsEarnTypes.LevelUp:
-                    PlayerInfo.AbilityPoints += 10;
+                    PlayerInfo.AbilityPoints += EXTRA_BOSS_POINTS;
+                    SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.EarnPointsToast, EXTRA_BOSS_POINTS);
                     break;
                 case PointsEarnTypes.BossKill:
                     int points = UnityEngine.Random.Range(1, 4);
                     PlayerInfo.AbilityPoints += points;
+                    SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.EarnPointsToast, points);
                     break;
             }
 
