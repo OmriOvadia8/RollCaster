@@ -65,6 +65,11 @@ namespace SD_Test
                 toasting.DisplayTextToast(10, PoolNames.SpendPointsToast);
                 toasting.DisplayTextToast(10, PoolNames.LevelUpToast);
             }
+
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                SDDebug.Log(GameLogic.PlayerController.GetCurrentRollsAmount());
+            }
         }
 
         public void TakeDamage(double damage)

@@ -30,7 +30,14 @@ namespace SD_UI
 
         private void Start() => CheckRollsForSpin();
 
-        public void OnRoll() => StartCoroutine(RollCoroutine());
+        public void OnRoll()
+        {
+            if (GameLogic.PlayerController.GetCurrentRollsAmount() > 0)
+            {
+                StartCoroutine(RollCoroutine());
+            }
+        }
+
 
         private IEnumerator RollCoroutine()
         {
@@ -54,7 +61,6 @@ namespace SD_UI
             SDAbilityData chosenAbility = abilityRoller.GetRandomAbility();
             ChosenAbilityIconChange(chosenAbility);
             abilityAnimationController.UseAbility(chosenAbility.AbilityName, diceOutcome);
-            CheckRollsForSpin();
         }
 
         private void ChosenAbilityIconChange(SDAbilityData abilityData)
@@ -67,7 +73,7 @@ namespace SD_UI
         {
             SpinEnable(false);
 
-            if (GameLogic.Player.PlayerData.PlayerInfo.CurrentRolls > 0)
+            if (GameLogic.PlayerController.GetCurrentRollsAmount() > 0)
             {
                 SpinEnable(true);
             }

@@ -52,7 +52,7 @@ namespace SD_GameLoad
         #region Player Rolls
         public void DecreaseRoll()
         {
-            if (PlayerInfo.CurrentRolls > 0)
+            if (GetCurrentRollsAmount() > 0)
             {
                 PlayerInfo.CurrentRolls--;
             }
@@ -63,17 +63,32 @@ namespace SD_GameLoad
             SDGameLogic.Instance.Player.SavePlayerData();
         }
 
-        public void IncreaseRoll()
+        public void IncreaseRoll(int rolls)
         {
-            if (PlayerInfo.CurrentRolls < PlayerInfo.MaxRolls)
+            if (GetCurrentRollsAmount() < PlayerInfo.MaxRolls)
             {
-                PlayerInfo.CurrentRolls++;
+                PlayerInfo.CurrentRolls+= rolls;
             }
 
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateRollsUI, null);
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.CheckRollsForSpin, null);
 
             SDGameLogic.Instance.Player.SavePlayerData();
+        }
+
+        public int GetCurrentRollsAmount()
+        {
+            return PlayerInfo.CurrentRolls;
+        }
+
+        public int GetMaxRollsAmount()
+        {
+            return PlayerInfo.MaxRolls;
+        }
+
+        public bool IsRegenOn()
+        {
+            return PlayerInfo.IsRollRegenOn;
         }
 
         #endregion
