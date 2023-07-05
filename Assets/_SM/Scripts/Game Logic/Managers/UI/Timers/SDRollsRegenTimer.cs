@@ -11,34 +11,37 @@ namespace SD_UI
     {
         [SerializeField] private TMP_Text rollRegenerationTimerText;
         [SerializeField] private GameObject timer;
+        private const string ROLL_TWEEN = "roll";
+        private const int ROLLS_REGEN_AMOUNT = 5;
         private int maxRolls;
         private int rollsRegenDuration;
-        private const string ROLL_TWEEN = "roll";
-        [SerializeField] int rollsRegenAmount = 10;
 
         private void OnEnable()
         {
-            SDManager.Instance.EventsManager.AddListener(SDEventNames.OnPause, OnPause);
+            AddListener(SDEventNames.OnPause, HandlePause);
+            AddListener(SDEventNames.StartRollsRegeneration, ActivateRollRegenerationAfterPause);
         }
 
         private void OnDisable()
         {
-            SDManager.Instance.EventsManager.RemoveListener(SDEventNames.OnPause, OnPause);
+            RemoveListener(SDEventNames.OnPause, HandlePause);
+            RemoveListener(SDEventNames.StartRollsRegeneration, ActivateRollRegenerationAfterPause);
         }
 
         private void Start()
         {
-            timer.SetActive(true);
+            timer.SetActive(false);
             maxRolls = GameLogic.PlayerController.GetMaxRollsAmount();
             rollsRegenDuration = GameLogic.Player.PlayerData.PlayerInfo.RollRegenDuration;
+            ActivateRollRegenerationAfterPause();
         }
 
-        private void OnPause(object pauseStatus)
+        private void HandlePause(object pauseStatus)
         {
             bool isPaused = (bool)pauseStatus;
             if (isPaused)
             {
-                KillRollTweenTimer();
+                StopRollTweenTimer();
             }
             else
             {
@@ -46,88 +49,81 @@ namespace SD_UI
             }
         }
 
-        private void KillRollTweenTimer() => DOTween.Kill(ROLL_TWEEN);
+        private void StopRollTweenTimer() => DOTween.Kill(ROLL_TWEEN);
 
         private void StartRollRegenAfterPause(int durationAfterPause)
         {
-             int remainingDuration = durationAfterPause;
-
-             DOTween.To(() => remainingDuration, x => remainingDuration = x, 0, remainingDuration)
-                 .SetEase(Ease.Linear).SetId(ROLL_TWEEN)
-                 .OnUpdate(() =>
-                 {
-                     if (GameLogic.Player.PlayerData.PlayerInfo.RollRegenCurrentDuration != remainingDuration)
-                     {
-                         GameLogic.Player.PlayerData.PlayerInfo.RollRegenCurrentDuration = remainingDuration;
-                         SDDebug.Log(GameLogic.Player.PlayerData.PlayerInfo.RollRegenCurrentDuration);
-                         GameLogic.Player.SavePlayerData();
-                     }
-                     rollRegenerationTimerText.text = SDExtension.GetFormattedTimeSpan(remainingDuration);
-                 })
-                 .OnComplete(() => RollRegenCompletion());
+            int remainingDuration = durationAfterPause;
+            ConfigureRollTween(remainingDuration);
         }
 
-        public void ActivateRollRegenerationAfterPause()
+        private void ConfigureRollTween(int remainingDuration)
+        {
+            DOTween.To(() => remainingDuration, x => remainingDuration = x, 0, remainingDuration)
+                .SetEase(Ease.Linear).SetId(ROLL_TWEEN)
+                .OnUpdate(() => UpdateRollRegenDuration(remainingDuration))
+                .OnComplete(RollRegenCompletion);
+        }
+
+        private void UpdateRollRegenDuration(int remainingDuration)
+        {
+            if (GameLogic.Player.PlayerData.PlayerInfo.RollRegenCurrentDuration != remainingDuration)
+            {
+                GameLogic.Player.PlayerData.PlayerInfo.RollRegenCurrentDuration = remainingDuration;
+                SDDebug.Log(GameLogic.Player.PlayerData.PlayerInfo.RollRegenCurrentDuration);
+                GameLogic.Player.SavePlayerData();
+            }
+            rollRegenerationTimerText.text = $"+{ROLLS_REGEN_AMOUNT} Rolls in {SDExtension.GetFormattedTimeSpan(remainingDuration)}";
+        }
+
+        public void ActivateRollRegenerationAfterPause(object obj = null)
         {
             int offlineTime = Manager.TimerManager.GetLastOfflineTimeSeconds();
             int currentRollsDuration = GameLogic.Player.PlayerData.PlayerInfo.RollRegenCurrentDuration;
-            int newDuration;
-            if(GameLogic.PlayerController.GetCurrentRollsAmount() <= maxRolls)
+            if (GameLogic.PlayerController.GetCurrentRollsAmount() < maxRolls)
             {
+                timer.SetActive(true);
                 if (GameLogic.PlayerController.IsRegenOn())
                 {
-                    if (offlineTime < currentRollsDuration)
-                    {
-                        newDuration = currentRollsDuration - offlineTime;
-                        StartRollRegenAfterPause(newDuration);
-                    }
-
-                    else
-                    {
-                        int timeAfterReward = offlineTime - currentRollsDuration;
-
-                        int rewardsToAdd = (offlineTime + (rollsRegenDuration - currentRollsDuration)) / rollsRegenDuration;
-
-                        for (int i = 0; i < rewardsToAdd; i++)
-                        {
-                            RollRegenReward();
-                        }
-
-                        int elapsedTimeAfterFullCycles = timeAfterReward % rollsRegenDuration;
-
-                        newDuration = rollsRegenDuration - elapsedTimeAfterFullCycles;
-
-                        StartRollRegenAfterPause(newDuration);
-                    }
+                    HandleRegen(offlineTime, currentRollsDuration);
                 }
                 else
                 {
-                    StartRollRegeneration(rollsRegenDuration);
+                    StartRollRegeneration();
                 }
             }
-            
         }
 
-        private void StartRollRegeneration(int currentDuration)
+        private void HandleRegen(int offlineTime, int currentRollsDuration)
+        {
+            if (offlineTime < currentRollsDuration)
+            {
+                StartRollRegenAfterPause(currentRollsDuration - offlineTime);
+            }
+            else
+            {
+                CalculateRewardsAndStartRegen(offlineTime, currentRollsDuration);
+            }
+        }
+
+        private void CalculateRewardsAndStartRegen(int offlineTime, int currentRollsDuration)
+        {
+            int timeAfterReward = offlineTime - currentRollsDuration;
+            int rewardsToAdd = (offlineTime + (rollsRegenDuration - currentRollsDuration)) / rollsRegenDuration;
+
+            for (int i = 0; i < rewardsToAdd; i++) RollRegenReward();
+
+            int elapsedTimeAfterFullCycles = timeAfterReward % rollsRegenDuration;
+            int newDuration = rollsRegenDuration - elapsedTimeAfterFullCycles;
+
+            StartRollRegenAfterPause(newDuration);
+        }
+
+        private void StartRollRegeneration()
         {
             GameLogic.Player.PlayerData.PlayerInfo.IsRollRegenOn = true;
-            rollRegenerationTimerText.text = SDExtension.GetFormattedTimeSpan(currentDuration);
-
-            int remainingDuration = currentDuration;
-            
-            DOTween.To(() => remainingDuration, x => remainingDuration = x, 0, remainingDuration)
-                .SetEase(Ease.Linear).SetId(ROLL_TWEEN)
-                .OnUpdate(() =>
-                {
-                    if (GameLogic.Player.PlayerData.PlayerInfo.RollRegenCurrentDuration != remainingDuration)
-                    {
-                        GameLogic.Player.PlayerData.PlayerInfo.RollRegenCurrentDuration = remainingDuration;
-                        SDDebug.Log(GameLogic.Player.PlayerData.PlayerInfo.RollRegenCurrentDuration);
-                        GameLogic.Player.SavePlayerData();
-                    }
-                    rollRegenerationTimerText.text = SDExtension.GetFormattedTimeSpan(remainingDuration);
-                })
-                .OnComplete(() => RollRegenCompletion());
+            rollRegenerationTimerText.text = SDExtension.GetFormattedTimeSpan(rollsRegenDuration);
+            ConfigureRollTween(rollsRegenDuration);
         }
 
         private void RollRegenCompletion()
@@ -136,25 +132,30 @@ namespace SD_UI
             if (GameLogic.PlayerController.GetCurrentRollsAmount() < maxRolls)
             {
                 RollRegenReward();
-                StartRollRegeneration(rollsRegenDuration);
+                StartRollRegeneration();
             }
             else
             {
                 GameLogic.Player.PlayerData.PlayerInfo.IsRollRegenOn = false;
                 GameLogic.Player.PlayerData.PlayerInfo.RollRegenCurrentDuration = rollsRegenDuration;
+                timer.SetActive(false);
             }
-
-            InvokeEvent(SDEventNames.UpdateRollsUI, null);
-
+            UpdateRollsUI();
             GameLogic.Player.SavePlayerData();
         }
 
         private void RollRegenReward()
         {
             var currentRolls = GameLogic.PlayerController.GetCurrentRollsAmount();
-            int potentialRollTotal = currentRolls + rollsRegenAmount;
+            int potentialRollTotal = currentRolls + ROLLS_REGEN_AMOUNT;
             GameLogic.Player.PlayerData.PlayerInfo.CurrentRolls = Math.Min(potentialRollTotal, maxRolls);
+            UpdateRollsUI();
+        }
+
+        private void UpdateRollsUI()
+        {
             InvokeEvent(SDEventNames.UpdateRollsUI, null);
+            InvokeEvent(SDEventNames.CheckRollsForSpin, null);
         }
     }
 }

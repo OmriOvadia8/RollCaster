@@ -59,7 +59,10 @@ namespace SD_GameLoad
 
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateRollsUI, null);
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.CheckRollsForSpin, null);
-
+            if(!PlayerInfo.IsRollRegenOn)
+            {
+                SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.StartRollsRegeneration, null);
+            }
             SDGameLogic.Instance.Player.SavePlayerData();
         }
 

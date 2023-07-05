@@ -75,5 +75,6 @@ namespace SD_Core
         EarnPointsToast,
         XPToast,
         LvlUpToast,
+        StartRollsRegeneration,
     }
 }
