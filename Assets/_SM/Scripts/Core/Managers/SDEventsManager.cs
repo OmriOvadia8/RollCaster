@@ -76,5 +76,7 @@ namespace SD_Core
         XPToast,
         LvlUpToast,
         StartRollsRegeneration,
+        StartHPRegeneration,
+        StopHPRegen,
     }
 }

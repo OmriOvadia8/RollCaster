@@ -24,6 +24,11 @@ namespace SD_GameLoad
 
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.HurtBoss, null);
             currentBoss.CurrentHp -= damage;
+            
+            if(!BossDataManager.CurrentBoss.BossInfo.IsHPRegenOn)
+            {
+                SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.StartHPRegeneration, null);
+            }
 
             if (currentBoss.CurrentHp <= 0)
             {
@@ -59,6 +64,8 @@ namespace SD_GameLoad
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateAllUpgradesButtons, null);
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.SpawnBoss, null);
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateBossLevelUI, null);
+            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.StopHPRegen, null);
+            BossDataManager.CurrentBoss.BossInfo.IsHPRegenOn = false;
             BossDataManager.SaveCurrentBossData();
         }
 
