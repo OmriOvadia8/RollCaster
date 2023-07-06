@@ -30,9 +30,10 @@ namespace SD_UI
 
         private void Start()
         {
-            timer.SetActive(false);
             maxRolls = GameLogic.PlayerController.GetMaxRollsAmount();
             rollsRegenDuration = GameLogic.Player.PlayerData.PlayerInfo.RollRegenDuration;
+            CheckTimerCancel();
+            timer.SetActive(false);
             ActivateRollRegenerationAfterPause();
         }
 
@@ -156,6 +157,15 @@ namespace SD_UI
         {
             InvokeEvent(SDEventNames.UpdateRollsUI, null);
             InvokeEvent(SDEventNames.CheckRollsForSpin, null);
+        }
+
+        private void CheckTimerCancel()
+        {
+            if(GameLogic.PlayerController.GetCurrentRollsAmount() >= maxRolls)
+            {
+                GameLogic.Player.PlayerData.PlayerInfo.IsRollRegenOn = false;
+                GameLogic.Player.SavePlayerData();
+            }
         }
     }
 }

@@ -78,5 +78,7 @@ namespace SD_Core
         StartRollsRegeneration,
         StartHPRegeneration,
         StopHPRegen,
+        BossQuest,
+        UpdateQuest,
     }
 }

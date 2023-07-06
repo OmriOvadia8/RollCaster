@@ -2,6 +2,9 @@ using SD_Core;
 
 namespace SD_GameLoad
 {
+    /// <summary>
+    /// Handles player controls and actions.
+    /// </summary>
     public class SDPlayerController
     {
         private const double TOTAL_XP_MULTIPLIER_INCREASE = 1.2;
@@ -10,6 +13,10 @@ namespace SD_GameLoad
         private SDPlayerData PlayerInfo => SDGameLogic.Instance.Player.PlayerData.PlayerInfo;
 
         #region Player Leveling
+        /// <summary>
+        /// Adds experience points to the player's total.
+        /// </summary>
+        /// <param name="xp">The amount of experience points to add.</param>
         public void AddPlayerXP(double xp)
         {
             PlayerInfo.CurrentXp += xp;

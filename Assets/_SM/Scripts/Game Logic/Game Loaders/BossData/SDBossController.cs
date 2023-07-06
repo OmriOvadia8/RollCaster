@@ -85,6 +85,7 @@ namespace SD_GameLoad
             }
 
             SDGameLogic.Instance.PlayerController.SetLevelUpFlag(false);
+            InvokeEvent(SDEventNames.BossQuest);
         }
 
         /// <summary>
@@ -124,6 +125,16 @@ namespace SD_GameLoad
             {
                 return currentBoss.XP * BOSS_XP_INCREASE_FACTOR;
             }
+        }
+
+        public int GetBossIndex()
+        {
+            return BossDataManager.CurrentBoss.BossInfo.Index;
+        }
+
+        public int GetBossLevel()
+        {
+            return BossDataManager.CurrentBoss.BossInfo.Level;
         }
     }
 }
