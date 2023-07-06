@@ -13,6 +13,7 @@ namespace SD_UI
         [SerializeField] TMP_Text xpAmountText;
         [SerializeField] Image rollsBar;
         [SerializeField] TMP_Text rollsAmountText;
+        [SerializeField] TMP_Text extraRollsAmountText;
         [SerializeField] TMP_Text abilityPointsText;
 
         private void OnEnable()
@@ -51,9 +52,12 @@ namespace SD_UI
         {
             var maxRolls = GameLogic.Player.PlayerData.PlayerInfo.MaxRolls;
             var currentRolls = GameLogic.Player.PlayerData.PlayerInfo.CurrentRolls;
+            var extraRolls = GameLogic.Player.PlayerData.PlayerInfo.ExtraRolls;
 
+            extraRollsAmountText.text = $"{extraRolls} Extra Rolls";
             rollsBar.fillAmount = (float)currentRolls / maxRolls;
             rollsAmountText.text = $"{currentRolls} / {maxRolls}";
+
         }
 
         private void UpdateAbilityPointsUI(object obj = null)

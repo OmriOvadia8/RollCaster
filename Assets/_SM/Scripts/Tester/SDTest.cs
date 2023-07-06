@@ -68,7 +68,7 @@ namespace SD_Test
 
             if(Input.GetKeyDown(KeyCode.R))
             {
-                SDDebug.Log(GameLogic.PlayerController.GetCurrentRollsAmount());
+                GameLogic.PlayerController.IncreaseRoll(10);
             }
         }
 

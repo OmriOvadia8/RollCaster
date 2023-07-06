@@ -52,30 +52,40 @@ namespace SD_GameLoad
         #region Player Rolls
         public void DecreaseRoll()
         {
-            if (GetCurrentRollsAmount() > 0)
+            if (PlayerInfo.ExtraRolls > 0)
+            {
+                PlayerInfo.ExtraRolls--;
+            }
+            else if (GetCurrentRollsAmount() > 0)
             {
                 PlayerInfo.CurrentRolls--;
+                if (!PlayerInfo.IsRollRegenOn)
+                {
+                    SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.StartRollsRegeneration, null);
+                }
             }
 
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateRollsUI, null);
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.CheckRollsForSpin, null);
-            if(!PlayerInfo.IsRollRegenOn)
-            {
-                SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.StartRollsRegeneration, null);
-            }
             SDGameLogic.Instance.Player.SavePlayerData();
         }
 
         public void IncreaseRoll(int rolls)
         {
-            if (GetCurrentRollsAmount() < PlayerInfo.MaxRolls)
+            int neededRolls = PlayerInfo.MaxRolls - PlayerInfo.CurrentRolls;
+
+            if (rolls <= neededRolls)
             {
-                PlayerInfo.CurrentRolls+= rolls;
+                PlayerInfo.CurrentRolls += rolls;
+            }
+            else
+            {
+                PlayerInfo.CurrentRolls = PlayerInfo.MaxRolls;
+                PlayerInfo.ExtraRolls += rolls - neededRolls;
             }
 
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateRollsUI, null);
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.CheckRollsForSpin, null);
-
             SDGameLogic.Instance.Player.SavePlayerData();
         }
 

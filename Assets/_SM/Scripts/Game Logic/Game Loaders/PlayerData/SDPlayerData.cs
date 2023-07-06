@@ -13,8 +13,9 @@ namespace SD_GameLoad
         public int RollRegenDuration { get; set; }
         public int RollRegenCurrentDuration { get; set; }
         public bool IsRollRegenOn { get; set; }
+        public int ExtraRolls { get; set; }
 
-        public SDPlayerData(int level, double totalXP, double currentXP, int maxRolls, int currentRolls, int abilityPoints, int rollRegenDuration, int rollRegenCurrentDuration, bool isRollRegenOn)
+        public SDPlayerData(int level, double totalXP, double currentXP, int maxRolls, int currentRolls, int abilityPoints, int rollRegenDuration, int rollRegenCurrentDuration, bool isRollRegenOn, int extraRolls)
         {
             Level = level;
             TotalXpRequired = totalXP;
@@ -25,6 +26,7 @@ namespace SD_GameLoad
             RollRegenDuration = rollRegenDuration;
             RollRegenCurrentDuration = rollRegenCurrentDuration;
             IsRollRegenOn = isRollRegenOn;
+            ExtraRolls = extraRolls;
         }
     }
 
