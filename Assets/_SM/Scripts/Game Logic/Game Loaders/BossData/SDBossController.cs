@@ -13,21 +13,25 @@ namespace SD_GameLoad
 
         private SDBossDataManager BossDataManager => SDGameLogic.Instance.CurrentBossData;
 
+        /// <summary>
+        /// Apply damage to the current boss and progress to next boss level if current boss's health is below or equal to zero.
+        /// </summary>
         public void DamageBoss(double damage)
         {
             var currentBoss = BossDataManager.CurrentBoss?.BossInfo;
+
             if (currentBoss == null || !currentBoss.IsAlive)
             {
                 Debug.LogError("No current boss data available or boss is already dead.");
                 return;
             }
 
-            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.HurtBoss, null);
+            InvokeEvent(SDEventNames.HurtBoss);
             currentBoss.CurrentHp -= damage;
-            
-            if(!BossDataManager.CurrentBoss.BossInfo.IsHPRegenOn)
+
+            if (!currentBoss.IsHPRegenOn)
             {
-                SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.StartHPRegeneration, null);
+                InvokeEvent(SDEventNames.StartHPRegeneration);
             }
 
             if (currentBoss.CurrentHp <= 0)
@@ -38,19 +42,39 @@ namespace SD_GameLoad
             BossDataManager.SaveCurrentBossData();
         }
 
+        private void InvokeEvent(SDEventNames eventName)
+        {
+            SDManager.Instance.EventsManager.InvokeEvent(eventName, null);
+        }
+
         private void ProgressToNextBossLevel()
         {
             var currentBoss = BossDataManager.CurrentBoss?.BossInfo;
+
             if (currentBoss == null)
             {
                 Debug.LogError("No current boss data available.");
                 return;
             }
 
-            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.KillBoss, null);
+            HandleBossKill(currentBoss);
+            HandleNewBossSpawn();
+
+            currentBoss.IsHPRegenOn = false;
+            SDManager.Instance.AnalyticsManager.ReportEvent(SDEventType.boss_killed);
+            BossDataManager.SaveCurrentBossData();
+        }
+
+        /// <summary>
+        /// Invoke events and perform operations related to boss kill.
+        /// </summary>
+        private void HandleBossKill(SDBossData currentBoss)
+        {
+            InvokeEvent(SDEventNames.KillBoss);
             SDGameLogic.Instance.PlayerController.AddPlayerXP(currentBoss.XP);
             currentBoss.Index++;
             currentBoss.Level++;
+
             currentBoss.TotalHp = CalculateNewHp(currentBoss);
             currentBoss.CurrentHp = currentBoss.TotalHp;
             currentBoss.XP = CalculateNewXp(currentBoss);
@@ -61,12 +85,17 @@ namespace SD_GameLoad
             }
 
             SDGameLogic.Instance.PlayerController.SetLevelUpFlag(false);
-            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateAllUpgradesButtons, null);
-            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.SpawnBoss, null);
-            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.UpdateBossLevelUI, null);
-            SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.StopHPRegen, null);
-            BossDataManager.CurrentBoss.BossInfo.IsHPRegenOn = false;
-            BossDataManager.SaveCurrentBossData();
+        }
+
+        /// <summary>
+        /// Invoke events and perform operations related to spawning a new boss
+        /// </summary>
+        private void HandleNewBossSpawn()
+        {
+            InvokeEvent(SDEventNames.UpdateAllUpgradesButtons);
+            InvokeEvent(SDEventNames.SpawnBoss);
+            InvokeEvent(SDEventNames.UpdateBossLevelUI);
+            InvokeEvent(SDEventNames.StopHPRegen);
         }
 
         private double CalculateNewHp(SDBossData currentBoss)

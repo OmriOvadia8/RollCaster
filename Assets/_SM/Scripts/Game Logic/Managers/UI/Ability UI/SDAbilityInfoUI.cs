@@ -63,9 +63,13 @@ namespace SD_UI
                 lockIcon[index].SetActive(!ability.IsUnlocked);
 
                 UpdateButtonInteractability(ability, index, currentPoints);
+                SDDebug.Log($"{ability}'s unlock is {ability.IsUnlocked}");
             }
 
-            SDDebug.Log($"{ability}'s unlock is {ability.IsUnlocked}");
+            else
+            {
+                SDDebug.LogException($"{ability} is null");
+            }
         }
 
         private void UpdateAllButtonsInteractability(object obj = null)

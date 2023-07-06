@@ -85,7 +85,8 @@ namespace SD_Core
         product_unknown,
         purchase_failed,
         unity_services_failed,
-        hire_baker
+        hire_baker,
+        boss_killed
     }
 
     public enum SDDataKeys
