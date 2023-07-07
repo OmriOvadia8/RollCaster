@@ -71,7 +71,6 @@ namespace SD_UI
             if (GameLogic.Player.PlayerData.PlayerInfo.RollRegenCurrentDuration != remainingDuration)
             {
                 GameLogic.Player.PlayerData.PlayerInfo.RollRegenCurrentDuration = remainingDuration;
-                SDDebug.Log(GameLogic.Player.PlayerData.PlayerInfo.RollRegenCurrentDuration);
                 GameLogic.Player.SavePlayerData();
             }
             rollRegenerationTimerText.text = $"+{ROLLS_REGEN_AMOUNT} Rolls in {SDExtension.GetFormattedTimeSpan(remainingDuration)}";

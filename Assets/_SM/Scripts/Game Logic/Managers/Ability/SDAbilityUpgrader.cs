@@ -12,10 +12,10 @@ namespace SD_Ability
         public void UpgradeAbility(string abilityName)
         {
             var ability = GameLogic.AbilityData.FindAbilityByName(abilityName);
-            var cost = ability.UpgradeCost;
-
+            
             if (ability != null)
             {
+                var cost = ability.UpgradeCost;
                 if (GameLogic.PlayerController.CanSpendAbilityPoints(cost))
                 {
                     GameLogic.PlayerController.SpendAbilityPoints(cost);
@@ -23,11 +23,10 @@ namespace SD_Ability
                     InvokeEvent(SDEventNames.SpendPointsToast, cost);
                     InvokeEvent(SDEventNames.UpdateAbilityUpgradeUI, Enum.Parse(typeof(AbilityNames), ability.AbilityName));
                     GameLogic.AbilityData.SaveAbilityData();
-                    SDDebug.Log($"{ability.Level} in {ability.AbilityName} with {ability.Damage}");
                 }
                 else
                 {
-                    SDDebug.Log("Player does not have enough ability points to upgrade this ability.");
+                    SDDebug.LogException("Player does not have enough ability points to upgrade this ability or ability is null.");
                 }
             }
         }

@@ -66,7 +66,6 @@ namespace SD_Boss
             if (CurrentBossInfo.CurrentHPRegenDuration != remainingDuration)
             {
                 CurrentBossInfo.CurrentHPRegenDuration = remainingDuration;
-                SDDebug.Log(CurrentBossInfo.CurrentHPRegenDuration + "HP COUNTDOWN");
                 GameLogic.CurrentBossData.SaveCurrentBossData();
             }
         }

@@ -4,6 +4,9 @@ namespace SD_Core
     {
         private void OnApplicationPause(bool pauseStatus)
         {
+            if (Manager == null) return;
+            if (Manager.EventsManager == null) return;
+
             Manager.EventsManager.InvokeEvent(SDEventNames.OnPause, pauseStatus);
         }
     }
