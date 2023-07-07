@@ -80,5 +80,6 @@ namespace SD_Core
         StopHPRegen,
         BossQuest,
         UpdateQuest,
+        QuestToast,
     }
 }

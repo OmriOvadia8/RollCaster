@@ -123,6 +123,6 @@ namespace SD_Core
         LevelUpToast = 6,
         XPToast = 7,
         EarnPointsToast = 8,
-        SpendPointsToast = 9
+        SpendPointsToast = 9,
     }
 }

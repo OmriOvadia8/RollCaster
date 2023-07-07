@@ -8,10 +8,9 @@ namespace SD_UI
     {
         [SerializeField] private RectTransform damageToastPosition;
         [SerializeField] private RectTransform pointsToastPosition;
-        [SerializeField] private RectTransform XPToastPosition;
-        [SerializeField] private RectTransform LevelUpPosition;
+        [SerializeField] private RectTransform xPToastPosition;
+        [SerializeField] private RectTransform levelUpPosition;
         [SerializeField] private int textToastAmount = 10;
-
 
         private void OnEnable()
         {
@@ -57,18 +56,17 @@ namespace SD_UI
                     textToast.TextDetails("-", amount);
                     break;
                 case PoolNames.LevelUpToast:
-                    textToast.transform.position = LevelUpPosition.position;
+                    textToast.transform.position = levelUpPosition.position;
                     textToast.TextDetails("LEVEL UP!", null);
                     break;
                 case PoolNames.XPToast:
-                    textToast.transform.position = XPToastPosition.position;
+                    textToast.transform.position = xPToastPosition.position;
                     textToast.TextDetails("+", amount);
                     break;
                 default:
                     throw new ArgumentException("Invalid PoolName value");
             }
         }
-
 
         private void SpendTextToast(object amount)
         {
@@ -110,8 +108,8 @@ namespace SD_UI
             Manager.PoolManager.InitPool(nameof(PoolNames.DamageAnim3), textToastAmount, damageToastPosition);
             Manager.PoolManager.InitPool(nameof(PoolNames.EarnPointsToast), textToastAmount, pointsToastPosition);
             Manager.PoolManager.InitPool(nameof(PoolNames.SpendPointsToast), textToastAmount, pointsToastPosition);
-            Manager.PoolManager.InitPool(nameof(PoolNames.XPToast), textToastAmount, XPToastPosition);
-            Manager.PoolManager.InitPool(nameof(PoolNames.LevelUpToast), textToastAmount, LevelUpPosition);
+            Manager.PoolManager.InitPool(nameof(PoolNames.XPToast), textToastAmount, xPToastPosition);
+            Manager.PoolManager.InitPool(nameof(PoolNames.LevelUpToast), textToastAmount, levelUpPosition);
         }
     }
 }

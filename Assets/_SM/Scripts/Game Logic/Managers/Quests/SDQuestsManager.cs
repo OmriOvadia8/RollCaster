@@ -26,6 +26,7 @@ namespace SD_Quest
             {
                 GameLogic.PlayerController.IncreaseRoll(ROLL_REWARD);
                 InvokeEvent(SDEventNames.UpdateQuest, null);
+                InvokeEvent(SDEventNames.QuestToast, null);
             }
         }
     }
