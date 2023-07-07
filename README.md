@@ -1,3 +1,3 @@
-# SlotsDestiny
+# RollCaster
 
 IN DEVELOPMENT...
