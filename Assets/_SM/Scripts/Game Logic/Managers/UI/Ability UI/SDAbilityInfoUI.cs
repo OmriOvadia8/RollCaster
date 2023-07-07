@@ -4,6 +4,7 @@ using UnityEngine;
 using SD_Core;
 using System;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace SD_UI
 {
@@ -16,12 +17,14 @@ namespace SD_UI
         [SerializeField] Button[] abilityUpgraderButton;
         [SerializeField] Image[] abilityIcon;
         [SerializeField] GameObject[] lockIcon;
+        [SerializeField] GameObject newSkillToast;
 
         private void OnEnable()
         {
             AddListener(SDEventNames.UpdateAbilityUpgradeUI, UpdateUpgradeAbilityUI);
             AddListener(SDEventNames.UpdateAbilityUnlockedUI, UpdateUnlockedAbilityUI);
             AddListener(SDEventNames.UpdateAllUpgradesButtons, UpdateAllButtonsInteractability);
+            AddListener(SDEventNames.NewSkillToast, NewSkillToast);
         }
 
         private void OnDisable()
@@ -29,6 +32,7 @@ namespace SD_UI
             RemoveListener(SDEventNames.UpdateAbilityUpgradeUI, UpdateUpgradeAbilityUI);
             RemoveListener(SDEventNames.UpdateAbilityUnlockedUI, UpdateUnlockedAbilityUI);
             RemoveListener(SDEventNames.UpdateAllUpgradesButtons, UpdateAllButtonsInteractability);
+            RemoveListener(SDEventNames.NewSkillToast, NewSkillToast);
         }
 
         void Start() => UpdateAbilityTabsUI();
@@ -99,5 +103,14 @@ namespace SD_UI
 
         private void UpdateButtonInteractability(SDAbilityData ability, int index, int currentPoints) =>
             abilityUpgraderButton[index].interactable = ability.IsUnlocked && currentPoints >= ability.UpgradeCost;
+
+        private void NewSkillToast(object obj = null) => StartCoroutine(ShowAndHideToast());
+
+        private IEnumerator ShowAndHideToast()
+        {
+            newSkillToast.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            newSkillToast.SetActive(false);
+        }
     }
 }

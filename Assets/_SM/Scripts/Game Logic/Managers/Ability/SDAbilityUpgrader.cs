@@ -52,9 +52,9 @@ namespace SD_Ability
                     SDDebug.Log($"{ability.AbilityName} is unlocked");
 
                     InvokeEvent(SDEventNames.UpdateAbilityUnlockedUI, abilityName);
+                    InvokeEvent(SDEventNames.NewSkillToast, null);
                 }
             }
         }
-
     }
 }

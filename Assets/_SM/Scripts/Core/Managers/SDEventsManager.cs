@@ -81,5 +81,6 @@ namespace SD_Core
         BossQuest,
         UpdateQuest,
         QuestToast,
+        NewSkillToast,
     }
 }
