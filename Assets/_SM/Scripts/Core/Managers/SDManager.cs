@@ -16,6 +16,7 @@ namespace SD_Core
         public SDAnalyticsManager AnalyticsManager;
         public SDTimeManager TimerManager;
         public SDMonoManager MonoManager;
+        public SDInAppPurchase PurchaseManager;
 
         public Action onInitAction;
 
@@ -59,34 +60,19 @@ namespace SD_Core
         private void InitManagers()
         {
             MonoManager = new SDMonoManager();
-            SDDebug.Log($"InitManagers");
-
             CrashManager = new SDCrashManager();
-            SDDebug.Log($"After CrashManager");
 
             ConfigManager = new SDConfigManager(delegate
             {
             EventsManager = new SDEventsManager();
-            SDDebug.Log($"After SDEventsManager");
-
             AnalyticsManager = new SDAnalyticsManager();
-
             FactoryManager = new SDFactoryManager();
-            SDDebug.Log($"After SDFactoryManager");
-
             PoolManager = new SDPoolManager();
-            SDDebug.Log($"After SDPoolManager");
-
             SaveManager = new SDSaveManager();
-            SDDebug.Log($"After SDSaveManager");
-
-            SDDebug.Log($"Before Config Manager");
-
+            PurchaseManager = new SDInAppPurchase();
             TimerManager = new SDTimeManager();
-
-                SDDebug.Log($"After all managers loaded");
-                onInitAction.Invoke();
-            
+            SDDebug.Log($"After all managers loaded");
+            onInitAction.Invoke();
          });
         }
     }

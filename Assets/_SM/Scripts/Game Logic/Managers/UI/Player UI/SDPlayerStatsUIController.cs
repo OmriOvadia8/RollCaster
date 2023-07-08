@@ -57,7 +57,6 @@ namespace SD_UI
             extraRollsAmountText.text = $"{extraRolls} Extra Rolls";
             rollsBar.fillAmount = (float)currentRolls / maxRolls;
             rollsAmountText.text = $"{currentRolls} / {maxRolls}";
-
         }
 
         private void UpdateAbilityPointsUI(object obj = null)
