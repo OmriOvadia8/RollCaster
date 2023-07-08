@@ -15,9 +15,8 @@ namespace SD_Core
         {
             var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
 
-            //builder.AddProduct("com.omri.deliciousbakery.stars.big", ProductType.Consumable);
-            //builder.AddProduct("com.omri.deliciousbakery.stars.small", ProductType.Consumable);
-            //builder.AddProduct("com.omri.deliciousbakery.stars.medium", ProductType.Consumable);
+            builder.AddProduct("com.omri.rollcaster.rolls.small", ProductType.Consumable);
+            builder.AddProduct("com.omri.rollcaster.rolls.big", ProductType.Consumable);
 
             UnityPurchasing.Initialize(this, builder);
 

@@ -17,6 +17,7 @@ namespace SD_Core
         public SDTimeManager TimerManager;
         public SDMonoManager MonoManager;
         public SDInAppPurchase PurchaseManager;
+        public SDAdsManager AdsManager;
 
         public Action onInitAction;
 
@@ -68,6 +69,7 @@ namespace SD_Core
             AnalyticsManager = new SDAnalyticsManager();
             FactoryManager = new SDFactoryManager();
             PoolManager = new SDPoolManager();
+            AdsManager = new SDAdsManager();
             SaveManager = new SDSaveManager();
             PurchaseManager = new SDInAppPurchase();
             TimerManager = new SDTimeManager();

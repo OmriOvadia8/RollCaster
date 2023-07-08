@@ -1496,10 +1496,10 @@ RectTransform:
   m_Father: {fileID: 1266772105}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 810, y: -225}
+  m_SizeDelta: {x: 260, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &241814483
 MonoBehaviour:
@@ -5555,6 +5555,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994856921}
   m_CullTransparentMesh: 1
+--- !u!1 &1027693555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1027693557}
+  - component: {fileID: 1027693556}
+  m_Layer: 0
+  m_Name: StoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1027693556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027693555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a51c76b3a91444fa4a9ee4e8e945e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  failedToLoadWindow: {fileID: 210886207}
+--- !u!4 &1027693557
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027693555}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.564048, y: -0.6094457, z: -3.558813}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1034410083
 GameObject:
   m_ObjectHideFlags: 0
@@ -5897,7 +5942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1091819280
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8075,7 +8120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1457522776}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1027693556}
+        m_TargetAssemblyTypeName: SD_UI.SDStoreActions, SD_UI
+        m_MethodName: IAPRollsPurchase
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1457522776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10528,10 +10585,10 @@ RectTransform:
   m_Father: {fileID: 1266772105}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 130, y: -225}
+  m_SizeDelta: {x: 260, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1898024476
 MonoBehaviour:
@@ -11281,7 +11338,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2089341511}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1027693556}
+        m_TargetAssemblyTypeName: SD_UI.SDStoreActions, SD_UI
+        m_MethodName: WatchAdForRolls
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2089341511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11356,10 +11425,10 @@ RectTransform:
   m_Father: {fileID: 1266772105}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 470, y: -225}
+  m_SizeDelta: {x: 260, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2098773351
 MonoBehaviour:
@@ -11556,7 +11625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2132536000
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11665,7 +11734,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2132935892}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1027693556}
+        m_TargetAssemblyTypeName: SD_UI.SDStoreActions, SD_UI
+        m_MethodName: IAPRollsPurchase
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2132935892
 MonoBehaviour:
   m_ObjectHideFlags: 0

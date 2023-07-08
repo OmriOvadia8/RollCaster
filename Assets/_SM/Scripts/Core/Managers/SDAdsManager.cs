@@ -1,149 +1,149 @@
-//using System;
-//using UnityEngine.Advertisements;
+using System;
+using UnityEngine.Advertisements;
 
-//namespace SD_Core
-//{
-//    public class SDAdsManager : IUnityAdsLoadListener, IUnityAdsShowListener, IUnityAdsInitializationListener
-//    {
-//        private bool isInterstitialLoaded;
-//        private bool isRewardedLoaded;
-//        private Action<bool> onShowCompleteAction;
-//        private Action<bool> onShowRewardedCompleteAction;
-//        private string gameID;
-//        private string adUnit;
-//        private string rewardedAdUnit;
+namespace SD_Core
+{
+    public class SDAdsManager : IUnityAdsLoadListener, IUnityAdsShowListener, IUnityAdsInitializationListener
+    {
+        private bool isInterstitialLoaded;
+        private bool isRewardedLoaded;
+        private Action<bool> onShowCompleteAction;
+        private Action<bool> onShowRewardedCompleteAction;
+        private string gameID;
+        private string adUnit;
+        private string rewardedAdUnit;
 
-//        public SDAdsManager() => LoadAdsConfig();
+        public SDAdsManager() => LoadAdsConfig();
 
-//        private void LoadAdsConfig()
-//        {
-//            SDManager.Instance.ConfigManager.GetConfigAsync("ads_config", (AdsConfigData config) =>
-//            {
-//                gameID = config.GameId;
-//                adUnit = config.AdUnit;
-//                rewardedAdUnit = config.RewardedAdUnit;
+        private void LoadAdsConfig()
+        {
+            SDManager.Instance.ConfigManager.GetConfigAsync("ads_config", (AdsConfigData config) =>
+            {
+                gameID = config.GameId;
+                adUnit = config.AdUnit;
+                rewardedAdUnit = config.RewardedAdUnit;
 
-//                Advertisement.Initialize(gameID, false, this);
-//                LoadAd();
-//            });
-//        }
+                Advertisement.Initialize(gameID, false, this);
+                LoadAd();
+            });
+        }
 
-//        public void ShowAd(Action<bool> onShowAdComplete = null)
-//        {
-//            if (!isInterstitialLoaded)
-//            {
-//                onShowAdComplete?.Invoke(false);
-//                return;
-//            }
+        public void ShowAd(Action<bool> onShowAdComplete = null)
+        {
+            if (!isInterstitialLoaded)
+            {
+                onShowAdComplete?.Invoke(false);
+                return;
+            }
 
-//            onShowCompleteAction = onShowAdComplete;
-//            Advertisement.Show(adUnit, this);
-//        }
+            onShowCompleteAction = onShowAdComplete;
+            Advertisement.Show(adUnit, this);
+        }
 
-//        public void ShowRewardedAd(Action<bool> onShowAdComplete)
-//        {
-//            if (!isRewardedLoaded)
-//            {
-//                onShowAdComplete.Invoke(false);
-//                return;
-//            }
+        public void ShowRewardedAd(Action<bool> onShowAdComplete)
+        {
+            if (!isRewardedLoaded)
+            {
+                onShowAdComplete.Invoke(false);
+                return;
+            }
 
-//            onShowRewardedCompleteAction = onShowAdComplete;
-//            Advertisement.Show(rewardedAdUnit, this);
-//        }
+            onShowRewardedCompleteAction = onShowAdComplete;
+            Advertisement.Show(rewardedAdUnit, this);
+        }
 
-//        private void LoadAd()
-//        {
-//            Advertisement.Load(rewardedAdUnit, this);
-//            Advertisement.Load(adUnit, this);
-//        }
+        private void LoadAd()
+        {
+            Advertisement.Load(rewardedAdUnit, this);
+            Advertisement.Load(adUnit, this);
+        }
 
-//        public void OnInitializationComplete() => LoadAd();
+        public void OnInitializationComplete() => LoadAd();
 
-//        public void OnInitializationFailed(UnityAdsInitializationError error, string message) =>
-//            SDManager.Instance.CrashManager.LogExceptionHandling("ads initialization failed " + message + " error : " + error.ToString());
-        
-//        public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
-//        {
-//            SDManager.Instance.CrashManager.LogExceptionHandling(message);
+        public void OnInitializationFailed(UnityAdsInitializationError error, string message) =>
+            SDManager.Instance.CrashManager.LogExceptionHandling("ads initialization failed " + message + " error : " + error.ToString());
 
-//            onShowCompleteAction?.Invoke(false);
-//            onShowRewardedCompleteAction?.Invoke(false);
+        public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
+        {
+            SDManager.Instance.CrashManager.LogExceptionHandling(message);
 
-//            onShowCompleteAction = null;
-//            onShowRewardedCompleteAction = null;
+            onShowCompleteAction?.Invoke(false);
+            onShowRewardedCompleteAction?.Invoke(false);
 
-//            LoadAd();
-//        }
+            onShowCompleteAction = null;
+            onShowRewardedCompleteAction = null;
 
-//        public void OnUnityAdsShowStart(string placementId) => SDManager.Instance.AnalyticsManager.ReportEvent(SDEventType.ad_show_start);
+            LoadAd();
+        }
 
-//        public void OnUnityAdsShowClick(string placementId)
-//        {
-//            SDManager.Instance.AnalyticsManager.ReportEvent(SDEventType.ad_show_click);
-//            onShowCompleteAction?.Invoke(true);
-//        }
+        public void OnUnityAdsShowStart(string placementId) => SDManager.Instance.AnalyticsManager.ReportEvent(SDEventType.ad_show_start);
 
-//        public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
-//        {
-//            SDManager.Instance.AnalyticsManager.ReportEvent(SDEventType.ad_show_complete);
-//            onShowCompleteAction?.Invoke(true);
+        public void OnUnityAdsShowClick(string placementId)
+        {
+            SDManager.Instance.AnalyticsManager.ReportEvent(SDEventType.ad_show_click);
+            onShowCompleteAction?.Invoke(true);
+        }
 
-//            if (showCompletionState == UnityAdsShowCompletionState.COMPLETED && placementId == rewardedAdUnit)
-//            {
-//                onShowRewardedCompleteAction?.Invoke(true);
-//            }
+        public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
+        {
+            SDManager.Instance.AnalyticsManager.ReportEvent(SDEventType.ad_show_complete);
+            onShowCompleteAction?.Invoke(true);
 
-//            onShowCompleteAction = null;
-//            onShowRewardedCompleteAction = null;
+            if (showCompletionState == UnityAdsShowCompletionState.COMPLETED && placementId == rewardedAdUnit)
+            {
+                onShowRewardedCompleteAction?.Invoke(true);
+            }
 
-//            LoadAd();
-//        }
+            onShowCompleteAction = null;
+            onShowRewardedCompleteAction = null;
 
-//        public void OnUnityAdsAdLoaded(string placementId)
-//        {
-//            if (placementId == rewardedAdUnit)
-//            {
-//                isRewardedLoaded = true;
-//            }
+            LoadAd();
+        }
 
-//            else if (placementId == adUnit)
-//            {
-//                isInterstitialLoaded = true;
-//            }
-//        }
+        public void OnUnityAdsAdLoaded(string placementId)
+        {
+            if (placementId == rewardedAdUnit)
+            {
+                isRewardedLoaded = true;
+            }
 
-//        public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
-//        {
-//            SDManager.Instance.CrashManager.LogExceptionHandling("load ad failed " + message + " error : " + error.ToString());
+            else if (placementId == adUnit)
+            {
+                isInterstitialLoaded = true;
+            }
+        }
 
-//            if (placementId == rewardedAdUnit)
-//            {
-//                isRewardedLoaded = false;
-//            }
-//            else if (placementId == adUnit)
-//            {
-//                isInterstitialLoaded = false;
-//            }
-            
-//            LoadAd();
-//        }
+        public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
+        {
+            SDManager.Instance.CrashManager.LogExceptionHandling("load ad failed " + message + " error : " + error.ToString());
 
-//        public bool IsRewardedAdReady()
-//        {
-//            return isRewardedLoaded;
-//        }
+            if (placementId == rewardedAdUnit)
+            {
+                isRewardedLoaded = false;
+            }
+            else if (placementId == adUnit)
+            {
+                isInterstitialLoaded = false;
+            }
 
-//        public bool IsAdReady()
-//        {
-//            return isInterstitialLoaded;
-//        }
-//    }
+            LoadAd();
+        }
 
-//    public class AdsConfigData
-//    {
-//        public string GameId { get; set; }
-//        public string AdUnit { get; set; }
-//        public string RewardedAdUnit { get; set; }
-//    }
-//}
+        public bool IsRewardedAdReady()
+        {
+            return isRewardedLoaded;
+        }
+
+        public bool IsAdReady()
+        {
+            return isInterstitialLoaded;
+        }
+    }
+
+    public class AdsConfigData
+    {
+        public string GameId { get; set; }
+        public string AdUnit { get; set; }
+        public string RewardedAdUnit { get; set; }
+    }
+}
