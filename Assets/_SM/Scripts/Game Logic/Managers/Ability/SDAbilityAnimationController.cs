@@ -22,6 +22,7 @@ namespace SD_Ability
             }
         }
 
+
         private string DetermineAnimation(string abilityName, int diceOutcome)
         {
             int animationSuffix;

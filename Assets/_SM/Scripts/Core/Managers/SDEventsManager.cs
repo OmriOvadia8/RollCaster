@@ -83,5 +83,6 @@ namespace SD_Core
         QuestToast,
         NewSkillToast,
         FailAdToast,
+        PlaySound,
     }
 }

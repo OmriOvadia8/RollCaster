@@ -1,6 +1,7 @@
 using SD_Core;
 using SD_GameLoad;
 using UnityEngine;
+using SD_Sound;
 
 namespace SD_UI
 {
@@ -27,5 +28,7 @@ namespace SD_UI
             SDDebug.Log(CurrentBossInfo.CurrentHp);
             SDDebug.Log(CurrentBossInfo.Level);
         }
+
+        public void PlayAbilitySound(SoundEffectType soundEffect) => InvokeEvent(SDEventNames.PlaySound, soundEffect);
     }
 }
