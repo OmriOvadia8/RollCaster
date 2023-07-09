@@ -69,6 +69,7 @@ namespace SD_Test
             if(Input.GetKeyDown(KeyCode.R))
             {
                 GameLogic.PlayerController.IncreaseRoll(10);
+                InvokeEvent(SDEventNames.FailAdToast, null);
             }
         }
 

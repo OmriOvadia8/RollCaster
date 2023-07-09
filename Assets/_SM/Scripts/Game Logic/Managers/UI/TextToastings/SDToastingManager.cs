@@ -10,7 +10,9 @@ namespace SD_UI
         [SerializeField] private RectTransform pointsToastPosition;
         [SerializeField] private RectTransform xPToastPosition;
         [SerializeField] private RectTransform levelUpPosition;
-        [SerializeField] private int textToastAmount = 10;
+        [SerializeField] private RectTransform failAdPosition;
+        [SerializeField] private int frequentTextToastAmount = 20;
+        [SerializeField] private int textToastAmount = 3;
 
         private void OnEnable()
         {
@@ -18,6 +20,7 @@ namespace SD_UI
             AddListener(SDEventNames.EarnPointsToast, EarnTextToast);
             AddListener(SDEventNames.XPToast, XPTextToast);
             AddListener(SDEventNames.LvlUpToast, LevelUpTextToast);
+            AddListener(SDEventNames.FailAdToast, FailedAdTextToast);
         }
 
         private void OnDisable()
@@ -26,6 +29,7 @@ namespace SD_UI
             RemoveListener(SDEventNames.EarnPointsToast, EarnTextToast);
             RemoveListener(SDEventNames.XPToast, XPTextToast);
             RemoveListener(SDEventNames.LvlUpToast, LevelUpTextToast);
+            RemoveListener(SDEventNames.FailAdToast, FailedAdTextToast);
         }
 
         private void Start() => MoneyToastPoolInitialization();
@@ -63,6 +67,10 @@ namespace SD_UI
                     textToast.transform.position = xPToastPosition.position;
                     textToast.TextDetails("+", amount);
                     break;
+                case PoolNames.FailAdToast:
+                    textToast.transform.position = failAdPosition.position;
+                    textToast.TextDetails("Failed to load ad, Please try again.", null);
+                    break;
                 default:
                     throw new ArgumentException("Invalid PoolName value");
             }
@@ -88,6 +96,8 @@ namespace SD_UI
 
         private void LevelUpTextToast(object obj = null) => DisplayTextToast(0, PoolNames.LevelUpToast);
 
+        private void FailedAdTextToast(object obj = null) => DisplayTextToast(0, PoolNames.FailAdToast);
+
         private Vector3 GetRandomToastPosition()
         {
             float minX = -1f;
@@ -103,13 +113,14 @@ namespace SD_UI
 
         private void MoneyToastPoolInitialization()
         {
-            Manager.PoolManager.InitPool(nameof(PoolNames.DamageAnim1), textToastAmount, damageToastPosition);
-            Manager.PoolManager.InitPool(nameof(PoolNames.DamageAnim2), textToastAmount, damageToastPosition);
-            Manager.PoolManager.InitPool(nameof(PoolNames.DamageAnim3), textToastAmount, damageToastPosition);
+            Manager.PoolManager.InitPool(nameof(PoolNames.DamageAnim1), frequentTextToastAmount, damageToastPosition);
+            Manager.PoolManager.InitPool(nameof(PoolNames.DamageAnim2), frequentTextToastAmount, damageToastPosition);
+            Manager.PoolManager.InitPool(nameof(PoolNames.DamageAnim3), frequentTextToastAmount, damageToastPosition);
             Manager.PoolManager.InitPool(nameof(PoolNames.EarnPointsToast), textToastAmount, pointsToastPosition);
-            Manager.PoolManager.InitPool(nameof(PoolNames.SpendPointsToast), textToastAmount, pointsToastPosition);
+            Manager.PoolManager.InitPool(nameof(PoolNames.SpendPointsToast), frequentTextToastAmount, pointsToastPosition);
             Manager.PoolManager.InitPool(nameof(PoolNames.XPToast), textToastAmount, xPToastPosition);
             Manager.PoolManager.InitPool(nameof(PoolNames.LevelUpToast), textToastAmount, levelUpPosition);
+            Manager.PoolManager.InitPool(nameof(PoolNames.FailAdToast), frequentTextToastAmount, failAdPosition);
         }
     }
 }

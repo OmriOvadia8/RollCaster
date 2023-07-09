@@ -41,9 +41,14 @@ namespace SD_UI
                     }
                     else
                     {
-                        failedToLoadWindow.SetActive(true);
+                        InvokeEvent(SDEventNames.FailAdToast, null);
                     }
                 });
+            }
+
+            else
+            {
+                InvokeEvent(SDEventNames.FailAdToast, null);
             }
         }
     }

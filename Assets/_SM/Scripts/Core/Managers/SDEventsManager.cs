@@ -82,5 +82,6 @@ namespace SD_Core
         UpdateQuest,
         QuestToast,
         NewSkillToast,
+        FailAdToast,
     }
 }

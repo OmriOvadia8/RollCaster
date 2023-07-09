@@ -124,5 +124,6 @@ namespace SD_Core
         XPToast = 7,
         EarnPointsToast = 8,
         SpendPointsToast = 9,
+        FailAdToast = 10,
     }
 }
