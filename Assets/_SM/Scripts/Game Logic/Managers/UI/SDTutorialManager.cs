@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using SD_Core;
 
 namespace SD_UI
 {
-    public class SDTutorialManager : MonoBehaviour
+    public class SDTutorialManager : SDMonoBehaviour
     {
         [SerializeField] GameObject ExplanationGuide;
 

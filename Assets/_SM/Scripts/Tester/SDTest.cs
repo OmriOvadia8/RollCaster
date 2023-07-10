@@ -4,6 +4,7 @@ using SD_Core;
 using UnityEngine.UI;
 using SD_Boss;
 using SD_UI;
+using SD_Ability;
 
 namespace SD_Test
 {
@@ -13,6 +14,7 @@ namespace SD_Test
         [SerializeField] Image healthBar;
         [SerializeField] SDBossAnimationsController bossAnim;
         [SerializeField] SDToastingManager toasting;
+        [SerializeField] SDAbilityAnimationController abilityAnim;
         public double currentHealth = 1000;
         public double maxHealth = 1000;
 
@@ -70,6 +72,35 @@ namespace SD_Test
             {
                 GameLogic.PlayerController.IncreaseRoll(10);
                 InvokeEvent(SDEventNames.FailAdToast, null);
+            }
+
+            if(Input.GetKeyDown(KeyCode.F1))
+            {
+                abilityAnim.UseAbility("SkullSmoke", 1);
+            }
+            if (Input.GetKeyDown(KeyCode.F2))
+            {
+                abilityAnim.UseAbility("Slashes", 1);
+            }
+            if (Input.GetKeyDown(KeyCode.F3))
+            {
+                abilityAnim.UseAbility("Scratch", 1);
+            }
+            if (Input.GetKeyDown(KeyCode.F4))
+            {
+                abilityAnim.UseAbility("SmokeExplosion", 1);
+            }
+            if (Input.GetKeyDown(KeyCode.F5))
+            {
+                abilityAnim.UseAbility("SkullExplosion", 1);
+            }
+            if (Input.GetKeyDown(KeyCode.F6))
+            {
+                abilityAnim.UseAbility("Tornado", 1);
+            }
+            if (Input.GetKeyDown(KeyCode.F7))
+            {
+                abilityAnim.UseAbility("Tentacle", 1);
             }
         }
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using SD_Core;
 using System;
+using SD_Sound;
 
 namespace SD_UI
 {
@@ -62,6 +63,7 @@ namespace SD_UI
                 case PoolNames.LevelUpToast:
                     textToast.transform.position = levelUpPosition.position;
                     textToast.TextDetails("LEVEL UP!", null);
+                    InvokeEvent(SDEventNames.PlaySound, SoundEffectType.LevelupAudio);
                     break;
                 case PoolNames.XPToast:
                     textToast.transform.position = xPToastPosition.position;

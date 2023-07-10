@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SD_GameLoad;
 using SD_Core;
+using UnityEngine.UI;
 
 namespace SD_Sound
 {
@@ -10,6 +11,9 @@ namespace SD_Sound
         [SerializeField] private List<AudioScriptable> audioAssets;
         private Dictionary<SoundEffectType, AudioScriptable> audioAssetDict;
         [SerializeField] AudioSource audioSource;
+        [SerializeField] Sprite muteSprite;
+        [SerializeField] Sprite unmuteSprite;
+        [SerializeField] Image buttonImage;
 
         private void Awake() => InitializeAudioDictionary();
 
@@ -52,12 +56,38 @@ namespace SD_Sound
                 }
             }
         }
+
+        public void ButtonClickSound() => PlaySound(SoundEffectType.ButtonClick);
+
+        public void ToggleMute()
+        {
+            AudioListener.volume = AudioListener.volume == 0 ? 1 : 0;
+            UpdateSprite();
+        }
+
+        private void UpdateSprite()
+        {
+            buttonImage.sprite = unmuteSprite;
+
+            if (AudioListener.volume == 0)
+            {
+                buttonImage.sprite = muteSprite;
+            }
+        }
     }
 
     public enum SoundEffectType
     {
         ButtonClick,
+        SkullSmokeAudio,
         SlashesAudio,
-
+        SmokeExplosionAudio,
+        SkullExplosionAudio,
+        ScratchesAudio,
+        TornadoAudio,
+        TentacleAudio,
+        BossDeathAudio,
+        BossRespawnAudio,
+        LevelupAudio,
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using SD_Core;
 using System;
 using System.Collections.Generic;
+using SD_Sound;
 
 namespace SD_Boss
 {
@@ -48,6 +49,7 @@ namespace SD_Boss
             isDead = true;
             int index = CurrentBossInfo.Index;
             bossComponents[index].animator.SetBool(nameof(BossAnimations.IsDead), isDead);
+            InvokeEvent(SDEventNames.PlaySound, SoundEffectType.BossDeathAudio);
             StartCoroutine(HideBoss(1.35f, index));
         }
 
