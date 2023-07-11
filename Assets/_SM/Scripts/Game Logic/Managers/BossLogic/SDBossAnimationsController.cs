@@ -8,13 +8,16 @@ using SD_Sound;
 
 namespace SD_Boss
 {
+    /// <summary>
+    /// Handles the boss states visuals by animations executions and logic
+    /// </summary>
     public class SDBossAnimationsController : SDLogicMonoBehaviour
     {
         [SerializeField] BossComponents[] bossComponents;
 
         private bool isHurt;
         private bool isDead;
-        private List<int> bossIndices = new List<int> { 0, 1};
+        private List<int> bossIndices = new List<int> { 0, 1}; // normal bosses indexes
         private int specialBossIndex = 2;
 
         private void OnEnable()
@@ -40,7 +43,6 @@ namespace SD_Boss
             isHurt = true;
             int index = CurrentBossInfo.Index;
             bossComponents[index].animator.SetBool(nameof(BossAnimations.IsHurt), isHurt);
-
             StartCoroutine(RecoverBoss(0.35f, index));
         }
 
@@ -53,6 +55,9 @@ namespace SD_Boss
             StartCoroutine(HideBoss(1.35f, index));
         }
 
+        /// <summary>
+        /// Coroutine to make the hurt animation activate only once per attack and not spam for every hit
+        /// </summary>
         private IEnumerator RecoverBoss(float timeToRecover, int index)
         {
             yield return new WaitForSeconds(timeToRecover);
@@ -61,6 +66,9 @@ namespace SD_Boss
             bossComponents[index].animator.SetBool(nameof(BossAnimations.IsHurt), isHurt);
         }
 
+        /// <summary>
+        /// Coroutine to spawn the boss after a specified delay and making the player able to attack the boss after its appearance
+        /// </summary>
         private IEnumerator SpawnBossWithDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
@@ -76,7 +84,10 @@ namespace SD_Boss
             }
         }
 
-        private IEnumerator HideBoss(float timeToHide, int index)
+        /// <summary>
+        /// Coroutine to hide the boss after a specified delay and making the player won't attack the boss while it's in de-spawning animation
+        /// </summary>
+        private IEnumerator HideBoss(float timeToHide, int index) 
         {
             CurrentBossInfo.IsAlive = false;
             InvokeEvent(SDEventNames.SpinEnable, false);
@@ -94,7 +105,6 @@ namespace SD_Boss
 
             return bossIndices[(CurrentBossInfo.Level - 1) % bossIndices.Count];
         }
-
     }
 
     [Serializable]
@@ -110,5 +120,4 @@ namespace SD_Boss
         IsHurt,
         IsDead,
     }
-
 }

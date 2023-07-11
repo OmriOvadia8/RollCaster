@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 namespace SD_Core
 {
@@ -10,11 +11,12 @@ namespace SD_Core
         private void Start()
         {
             DontDestroyOnLoad(gameObject);
-            WaitForFrame(DelayStart);
+            StartCoroutine(DelayStartCoroutine());
         }
 
-        private void DelayStart()
+        private IEnumerator DelayStartCoroutine()
         {
+            yield return new WaitForSeconds(1);
             var manager = new SDManager();
 
             manager.LoadManager(() =>
