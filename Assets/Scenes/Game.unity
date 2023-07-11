@@ -1259,7 +1259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 207391587347398059, guid: 531aa0dea5e2a4d49a26939be063eae7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: WindowsOpener
+      value: GameExplanationOpener
       objectReference: {fileID: 0}
     - target: {fileID: 207391587347398059, guid: 531aa0dea5e2a4d49a26939be063eae7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -1385,6 +1385,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -27.700012
       objectReference: {fileID: 0}
+    - target: {fileID: 2957181683641929961, guid: 531aa0dea5e2a4d49a26939be063eae7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3118093368799302948, guid: 531aa0dea5e2a4d49a26939be063eae7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -1415,7 +1419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3118093368799302948, guid: 531aa0dea5e2a4d49a26939be063eae7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: WindowsOpener
+      value: GameExplanationOpener
       objectReference: {fileID: 0}
     - target: {fileID: 3118093368799302948, guid: 531aa0dea5e2a4d49a26939be063eae7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -2496,7 +2500,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Reward: 10 Rolls
+  m_text: 'Reward: 15 Rolls
 
 '
   m_isRightToLeft: 0
@@ -6680,10 +6684,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7739934560322362105, guid: bd2848ef2d6921a46b374783e26da6ed, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 16777215
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7737,7 +7737,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 552626016}
         m_TargetAssemblyTypeName: SD_UI.SDTutorialManager, SD_UI
-        m_MethodName: WindowsOpener
+        m_MethodName: GameExplanationOpener
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -13,9 +13,10 @@ namespace SD_GameLoad
         public bool IsUnlocked { get; set; }
         public int UpgradeCost { get; set; }
         public int UnlockLevel { get; set; }
+        public int ComboHits { get; set; }
         public string IconResourcePath { get; set; }
 
-        public SDAbilityData(string abilityName, int level, double damage, bool isUnlocked, int upgradeCost, int unlockLevel, string iconResourcePath)
+        public SDAbilityData(string abilityName, int level, double damage, bool isUnlocked, int upgradeCost, int unlockLevel, int comboHits, string iconResourcePath)
         {
             AbilityName = abilityName;
             Level = level;
@@ -23,6 +24,7 @@ namespace SD_GameLoad
             IsUnlocked = isUnlocked;
             UpgradeCost = upgradeCost;
             UnlockLevel = unlockLevel;
+            ComboHits = comboHits;
             IconResourcePath = iconResourcePath;
         }
 

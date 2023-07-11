@@ -46,7 +46,7 @@ namespace SD_UI
             if (ability != null)
             {
                 abilityLevelText[index].text = $"Lv. {ability.Level:N0}";
-                abilityDamageText[index].text = $"Dmg. {ability.Damage.ToReadableNumber()}";
+                abilityDamageText[index].text = $"Dmg. {ability.Damage.ToReadableNumber()} x{ability.ComboHits}";
                 abilityUpgradeCostText[index].text = $"{ability.UpgradeCost:N0}";
                 UpdateAllButtonsInteractability();
             }

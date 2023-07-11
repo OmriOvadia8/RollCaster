@@ -54,7 +54,7 @@ namespace SD_UI
             var currentRolls = GameLogic.Player.PlayerData.PlayerInfo.CurrentRolls;
             var extraRolls = GameLogic.Player.PlayerData.PlayerInfo.ExtraRolls;
 
-            extraRollsAmountText.text = $"{extraRolls} Extra Rolls";
+            extraRollsAmountText.text = $"{extraRolls:N0} Extra Rolls";
             rollsBar.fillAmount = (float)currentRolls / maxRolls;
             rollsAmountText.text = $"{currentRolls} / {maxRolls}";
         }

@@ -5,11 +5,11 @@ namespace SD_GameLoad
 {
     public class SDBossController
     {
-        private const double BOSS_LEVEL_INCREASE_FACTOR = 2;
-        private const double NORMAL_LEVEL_INCREASE_FACTOR = 1.1;
-        private const double POST_BOSS_LEVEL_DECREASE_FACTOR = 0.7;
-        private const double BOSS_XP_INCREASE_FACTOR = 1.03;
-        private const double SPECIAL_BOSS_XP_INCREASE_FACTOR = 1.22;
+        private const double SPECIAL_LEVEL_INCREASE_FACTOR = 1.1525;
+        private const double NORMAL_LEVEL_INCREASE_FACTOR = 1.0825;
+        private const double POST_BOSS_LEVEL_DECREASE_FACTOR = 0.915;
+        private const double BOSS_XP_INCREASE_FACTOR = 1.015;
+        private const double SPECIAL_BOSS_XP_INCREASE_FACTOR = 1.2;
 
         private SDBossDataManager BossDataManager => SDGameLogic.Instance.CurrentBossData;
 
@@ -103,7 +103,7 @@ namespace SD_GameLoad
         {
             if (currentBoss.Level % currentBoss.SpecialBossLevel == 0)
             {
-                return currentBoss.TotalHp * BOSS_LEVEL_INCREASE_FACTOR;
+                return currentBoss.TotalHp * SPECIAL_LEVEL_INCREASE_FACTOR;
             }
             else if (currentBoss.Level % currentBoss.SpecialBossLevel == 1)
             {

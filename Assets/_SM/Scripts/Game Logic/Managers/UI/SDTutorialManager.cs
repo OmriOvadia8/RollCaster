@@ -1,5 +1,6 @@
 using UnityEngine;
 using SD_Core;
+using System.Collections;
 
 namespace SD_UI
 {
@@ -7,9 +8,16 @@ namespace SD_UI
     {
         [SerializeField] GameObject ExplanationGuide;
 
-        public void WindowsOpener(bool value)
+        private void Start() => WaitForFrame(CheckIfFirstTime);
+
+        private void CheckIfFirstTime()
         {
-            ExplanationGuide.SetActive(value);
+            if (Manager.TimerManager.GetLastOfflineTimeSeconds() == 0)
+            {
+                GameExplanationOpener(true);
+            }
         }
+
+        public void GameExplanationOpener(bool value) => ExplanationGuide.SetActive(value);
     }
 }

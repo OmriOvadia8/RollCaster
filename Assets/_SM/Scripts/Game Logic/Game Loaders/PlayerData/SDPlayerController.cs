@@ -9,6 +9,7 @@ namespace SD_GameLoad
     {
         private const double TOTAL_XP_MULTIPLIER_INCREASE = 1.2;
         private const int EXTRA_BOSS_POINTS = 10;
+        private const int NORMAL_KILL_POINTS = 3;
         private bool hasLeveledUp;
         private SDPlayerData PlayerInfo => SDGameLogic.Instance.Player.PlayerData.PlayerInfo;
 
@@ -124,9 +125,8 @@ namespace SD_GameLoad
                     SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.EarnPointsToast, EXTRA_BOSS_POINTS);
                     break;
                 case PointsEarnTypes.BossKill:
-                    int points = UnityEngine.Random.Range(1, 4);
-                    PlayerInfo.AbilityPoints += points;
-                    SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.EarnPointsToast, points);
+                    PlayerInfo.AbilityPoints += NORMAL_KILL_POINTS;
+                    SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.EarnPointsToast, NORMAL_KILL_POINTS);
                     break;
             }
 
