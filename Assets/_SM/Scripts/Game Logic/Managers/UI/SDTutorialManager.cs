@@ -1,6 +1,5 @@
 using UnityEngine;
 using SD_Core;
-using System.Collections;
 
 namespace SD_UI
 {

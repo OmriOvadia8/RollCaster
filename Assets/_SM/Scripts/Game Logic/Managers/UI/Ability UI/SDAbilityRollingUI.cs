@@ -38,7 +38,6 @@ namespace SD_UI
             }
         }
 
-
         private IEnumerator RollCoroutine()
         {
             float rollDuration = 1.75f;

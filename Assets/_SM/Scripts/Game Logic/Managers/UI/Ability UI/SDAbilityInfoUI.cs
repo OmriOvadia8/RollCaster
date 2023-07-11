@@ -18,6 +18,7 @@ namespace SD_UI
         [SerializeField] Image[] abilityIcon;
         [SerializeField] GameObject[] lockIcon;
         [SerializeField] GameObject newSkillToast;
+        [SerializeField] SDUpgradePingManager pingManager;
 
         private void OnEnable()
         {
@@ -90,6 +91,7 @@ namespace SD_UI
                     UpdateButtonInteractability(ability, index, currentPoints);
                 }
             }
+            pingManager.UpdateAbilityTabPing();
         }
 
         private void UpdateAbilityTabsUI()
@@ -101,8 +103,13 @@ namespace SD_UI
             }
         }
 
-        private void UpdateButtonInteractability(SDAbilityData ability, int index, int currentPoints) =>
-            abilityUpgraderButton[index].interactable = ability.IsUnlocked && currentPoints >= ability.UpgradeCost;
+        private void UpdateButtonInteractability(SDAbilityData ability, int index, int currentPoints)
+        {
+            bool isInteractable = ability.IsUnlocked && currentPoints >= ability.UpgradeCost;
+            abilityUpgraderButton[index].interactable = isInteractable;
+
+            pingManager.SetPing(index, isInteractable);
+        }
 
         private void NewSkillToast(object obj = null) => StartCoroutine(ShowAndHideToast());
 
