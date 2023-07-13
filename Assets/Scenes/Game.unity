@@ -6028,7 +6028,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a51c76b3a91444fa4a9ee4e8e945e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  failedToLoadWindow: {fileID: 210886207}
 --- !u!4 &1027693557
 Transform:
   m_ObjectHideFlags: 0
@@ -6893,7 +6892,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b652ebcbc86d91648973efb7b2abc5fb, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.04
+  m_Volume: 0.125
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -11893,6 +11892,7 @@ MonoBehaviour:
   bossAnim: {fileID: 1474366007}
   toasting: {fileID: 712182722}
   abilityAnim: {fileID: 149131356}
+  XPCheat: 0
   currentHealth: 1000
   maxHealth: 1000
 --- !u!4 &1933424334
