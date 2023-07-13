@@ -18,6 +18,7 @@ namespace SD_Test
         [SerializeField] SDBossAnimationsController bossAnim;
         [SerializeField] SDToastingManager toasting;
         [SerializeField] SDAbilityAnimationController abilityAnim;
+        [SerializeField] double XPCheat;
         public double currentHealth = 1000;
         public double maxHealth = 1000;
 
@@ -104,6 +105,10 @@ namespace SD_Test
             if (Input.GetKeyDown(KeyCode.F7))
             {
                 abilityAnim.UseAbility("Tentacle", 1);
+            }
+            if (Input.GetKeyDown(KeyCode.F8))
+            {
+                GameLogic.PlayerController.AddPlayerXP(XPCheat);
             }
         }
 

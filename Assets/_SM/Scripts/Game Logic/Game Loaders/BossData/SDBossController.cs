@@ -25,7 +25,7 @@ namespace SD_GameLoad
 
             if (currentBoss == null || !currentBoss.IsAlive)
             {
-                Debug.LogError("No current boss data available or boss is already dead.");
+                SDDebug.Log("No current boss data available or boss is already dead.");
                 return;
             }
 
@@ -56,7 +56,7 @@ namespace SD_GameLoad
 
             if (currentBoss == null)
             {
-                Debug.Log("No current boss data available.");
+                SDDebug.Log("No current boss data available.");
                 return;
             }
 
