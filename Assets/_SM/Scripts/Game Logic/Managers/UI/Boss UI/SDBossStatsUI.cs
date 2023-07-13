@@ -6,6 +6,9 @@ using SD_Core;
 
 namespace SD_UI
 {
+    /// <summary>
+    /// Handles the User Interface interactions for the boss statistics in the game, including updating level, HP, and boss crown visibility.
+    /// </summary>
     public class SDBossStatsUI : SDLogicMonoBehaviour
     {
         [SerializeField] TMP_Text levelText;
@@ -36,6 +39,10 @@ namespace SD_UI
 
         private void UpdateLevelText(object obj = null) => levelText.text = $"Boss Lv. {CurrentBossInfo.Level:N0}";
 
+        /// <summary>
+        /// Updates the boss health UI elements based on current boss data.
+        /// </summary>
+        /// <param name="obj">Optional parameter, not currently used.</param>
         private void UpdateHealthBar(object obj = null)
         {
             var maxHealth = CurrentBossInfo.TotalHp;

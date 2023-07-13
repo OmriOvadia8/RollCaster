@@ -3,6 +3,9 @@ using Firebase.Extensions;
 
 namespace SD_Core
 {
+    /// <summary>
+    /// The Singleton Manager class that initializes and manages all core managers in the game.
+    /// </summary>
     public class SDManager : ISDBaseManager
     {
         public static SDManager Instance;
@@ -40,6 +43,10 @@ namespace SD_Core
             });
         }
 
+        /// <summary>
+        /// Initializes the Firebase App and fixes dependencies if they are available.
+        /// If successful, invokes the passed action.
+        /// </summary>
         public void InitFirebase(Action onComplete)
         {
             Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
@@ -58,6 +65,10 @@ namespace SD_Core
             });
         }
 
+        /// <summary>
+        /// Initializes all core manager classes.
+        /// Invokes the onInitAction after successful initialization of all managers.
+        /// </summary>
         private void InitManagers()
         {
             MonoManager = new SDMonoManager();

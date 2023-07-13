@@ -4,6 +4,9 @@ namespace SD_GameLoad
 {
     public class SDBossDataManager
     {
+        /// <summary>
+        /// Handles the management of boss data.
+        /// </summary>
         public SDCurrentBoss CurrentBoss { get; private set; }
         public const string BOSS_CONFIG = "current_boss";
 
@@ -38,7 +41,6 @@ namespace SD_GameLoad
             {
                 SDDebug.LogException("CurrentBoss or BossInfo is null");
             }
-
         }
 
         private void OnConfigLoaded(SDCurrentBoss configData)

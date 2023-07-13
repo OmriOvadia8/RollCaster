@@ -2,6 +2,9 @@ using SD_Core;
 
 namespace SD_GameLoad
 {
+    /// <summary>
+    /// Represents the data related to a boss.
+    /// </summary>
     public class SDBossData
     {
         public int Index { get; set; }
@@ -15,6 +18,9 @@ namespace SD_GameLoad
         public bool IsHPRegenOn { get; set; }
         public bool IsAlive { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the SDBossData class.
+        /// </summary>
         public SDBossData(int level, double totalHp, double currentHp, int index, double xP, double specialBossLevel, int hPRegenDuration, int currentHPRegenDuration, bool isHPRegenOn)
         {
             Index = index;

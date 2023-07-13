@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace SD_GameLoad
 {
+    /// <summary>
+    /// Represents the data related to an ability.
+    /// </summary>
     [Serializable]
     public class SDAbilityData
     {
@@ -16,6 +19,9 @@ namespace SD_GameLoad
         public int ComboHits { get; set; }
         public string IconResourcePath { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the SDAbilityData class.
+        /// </summary>
         public SDAbilityData(string abilityName, int level, double damage, bool isUnlocked, int upgradeCost, int unlockLevel, int comboHits, string iconResourcePath)
         {
             AbilityName = abilityName;

@@ -2,7 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace SD_Core
-{
+{   
+    /// <summary>
+    /// Manages the creation and recycling of objects to improve game performance.
+    /// </summary>
     public class SDPoolManager
     {
         private Dictionary<PoolNames, SDPool> Pools = new();
@@ -15,6 +18,9 @@ namespace SD_Core
             Object.DontDestroyOnLoad(rootPools);
         }
 
+        /// <summary>
+        /// Initializes a pool of objects based on resource name.
+        /// </summary>
         public void InitPool(string resourceName, int amount, RectTransform parentTransform, int maxAmount = 100)
         {
             var original = Resources.Load<SDPoolable>(resourceName);
@@ -22,6 +28,9 @@ namespace SD_Core
             SDDebug.Log(original + "LOADED");
         }
 
+        /// <summary>
+        /// Initializes a pool of objects based on a provided original object.
+        /// </summary>
         public void InitPool(SDPoolable original, int amount, RectTransform parentTransform, int maxAmount)
         {
             SDManager.Instance.FactoryManager.MultiCreateAsync(original, Vector3.zero, amount,
@@ -46,6 +55,10 @@ namespace SD_Core
                 });
         }
 
+
+        /// <summary>
+        /// Gets an available object from the specified pool.
+        /// </summary>
         public SDPoolable GetPoolable(PoolNames poolName)
         {
             if (Pools.TryGetValue(poolName, out SDPool pool))
@@ -71,6 +84,9 @@ namespace SD_Core
             return null;
         }
 
+        /// <summary>
+        /// Returns a poolable object to its pool.
+        /// </summary>
         public void ReturnPoolable(SDPoolable poolable)
         {
             if (Pools.TryGetValue(poolable.poolName, out SDPool pool))
@@ -81,6 +97,9 @@ namespace SD_Core
             }
         }
 
+        /// <summary>
+        /// Destroys a pool and all its objects.
+        /// </summary>
         public void DestroyPool(PoolNames name)
         {
             if (Pools.TryGetValue(name, out SDPool pool))

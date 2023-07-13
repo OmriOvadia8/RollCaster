@@ -5,6 +5,9 @@ using SD_Core;
 
 namespace SD_GameLoad
 {
+    /// <summary>
+    /// Manages the store configurations and buying products.
+    /// </summary>
     public class SDStoreManager
     {
         public SDStoresConfigData StoresConfigData;
@@ -14,6 +17,12 @@ namespace SD_GameLoad
         private void LoadStoresConfig() =>
             SDManager.Instance.ConfigManager.GetConfigAsync("store_config", (SDStoresConfigData config) => StoresConfigData = config);
 
+        /// <summary>
+        /// Attempt to purchase a product from a store.
+        /// </summary>
+        /// <param name="sku">The SKU of the product.</param>
+        /// <param name="storeID">The ID of the store.</param>
+        /// <param name="onComplete">A callback function to be invoked when the operation is complete.</param>
         public void TryBuyProduct(string sku, string storeID, Action<bool> onComplete)
         {
             SDStoreData store = GetStoreByStoreID(storeID);
@@ -40,6 +49,10 @@ namespace SD_GameLoad
             });
         }
 
+        /// <summary>
+        /// Redeem a bundle in the product store.
+        /// </summary>
+        /// <param name="productStoreBundle">The bundle to redeem.</param>
         private void RedeemBundle(SDBundle[] productStoreBundle)
         {
             foreach (var bundle in productStoreBundle)
@@ -48,6 +61,11 @@ namespace SD_GameLoad
             }
         }
 
+        /// <summary>
+        /// Retrieve a store data by its ID.
+        /// </summary>
+        /// <param name="storeID">The ID of the store.</param>
+        /// <returns>The corresponding store data.</returns>
         public SDStoreData GetStoreByStoreID(string storeID)
         {
             return StoresConfigData.StoreDatas.FirstOrDefault(x => x.StoreID == storeID);

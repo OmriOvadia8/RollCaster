@@ -4,6 +4,10 @@ using UnityEngine.Purchasing;
 
 namespace SD_Core
 {
+    /// <summary>
+    /// Handles all in-app purchases for the application.
+    /// Implements IStoreListener interface to handle events related to the purchasing process.
+    /// </summary>
     public class SDInAppPurchase : IStoreListener
     {
         private IStoreController storeController;
@@ -31,6 +35,11 @@ namespace SD_Core
             SDDebug.Log("OnInitialized called in SDInAppPurchase.");
         }
 
+        /// <summary>
+        /// Initiates a purchase of the specified product.
+        /// </summary>
+        /// <param name="productID">The ID of the product to purchase.</param>
+        /// <param name="onPurchaseComplete">Action to be executed upon purchase completion.</param>
         public void Purchase(string productID, Action<bool> onPurchaseComplete)
         {
             if (!isInitialized)

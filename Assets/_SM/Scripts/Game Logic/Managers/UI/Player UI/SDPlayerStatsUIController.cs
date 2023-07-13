@@ -6,6 +6,10 @@ using SD_Core;
 
 namespace SD_UI
 {
+    /// <summary>
+    /// Handles the User Interface interactions for player stats in the game, including updating level, experience,
+    /// rolls, and ability points displays.
+    /// </summary>
     public class SDPlayerStatsUIController : SDLogicMonoBehaviour
     {
         [SerializeField] TMP_Text levelText;

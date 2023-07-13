@@ -8,10 +8,17 @@ using System.Threading.Tasks;
 
 namespace SD_Core
 {
+    /// <summary>
+    /// Manages the configuration data of the game using Firebase Remote Config and local config files.
+    /// </summary>
     public class SDConfigManager
     {
         private Action onInit;
 
+        /// <summary>
+        /// Initializes a new instance of the SDConfigManager class and sets the default configuration.
+        /// </summary>
+        /// <param name="onComplete">The action to be executed when the initialization is complete.</param>
         public SDConfigManager(Action onComplete)
         {
             SDDebug.Log($"SDConfigManager");
@@ -45,6 +52,11 @@ namespace SD_Core
             onInit.Invoke();
         }
 
+        /// <summary>
+        /// Fetches the requested configuration data asynchronously from Firebase Remote Config.
+        /// </summary>
+        /// <param name="configID">The ID of the configuration data to be fetched.</param>
+        /// <param name="onComplete">The action to be executed when the configuration data is fetched.</param>
         public void GetConfigAsync<T>(string configID, Action<T> onComplete)
         {
             SDDebug.Log($"GetConfigAsync {configID}");
@@ -56,6 +68,11 @@ namespace SD_Core
             onComplete.Invoke(saveData);
         }
 
+        /// <summary>
+        /// Fetches the requested configuration data asynchronously from a local configuration file.
+        /// </summary>
+        /// <param name="configID">The ID of the configuration data to be fetched.</param>
+        /// <param name="onComplete">The action to be executed when the configuration data is fetched.</param>
         public void GetConfigOfflineAsync<T>(string configID, Action<T> onComplete)
         {
             var path = $"Assets/_SD/Config/{configID}.json";

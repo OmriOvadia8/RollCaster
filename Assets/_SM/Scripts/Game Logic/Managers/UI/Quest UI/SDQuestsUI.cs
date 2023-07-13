@@ -8,6 +8,10 @@ using System.Collections;
 
 namespace SD_UI
 {
+    /// <summary>
+    /// Handles the User Interface interactions for quests in the game, including updating the quest description,
+    /// opening and closing the quest tab, and displaying a toast message for quest rewards.
+    /// </summary>
     public class SDQuestsUI : SDLogicMonoBehaviour
     {
         [SerializeField] TMP_Text questDescription;
@@ -37,6 +41,10 @@ namespace SD_UI
 
         private void ToastQuestReward(object obj = null) => ShowRewardToast();
 
+        /// <summary>
+        /// Calculates the level of the next boss based on the current boss level.
+        /// </summary>
+        /// <returns>The level of the next boss.</returns>
         private int CalculateNextBossLevel()
         {
             int currentBossLevel = GameLogic.BossController.GetBossLevel();
@@ -54,6 +62,10 @@ namespace SD_UI
             StartCoroutine(ShowAndHideToast());
         }
 
+        /// <summary>
+        /// Coroutine for showing the quest reward toast and then hiding it after a delay.
+        /// </summary>
+        /// <returns>An IEnumerator that can be used with StartCoroutine.</returns>
         private IEnumerator ShowAndHideToast()
         {
             questToast.SetActive(true);

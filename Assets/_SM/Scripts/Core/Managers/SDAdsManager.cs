@@ -3,6 +3,10 @@ using UnityEngine.Advertisements;
 
 namespace SD_Core
 {
+    /// <summary>
+    /// This class manages the advertisement behavior in the game.
+    /// Implements various Unity Ad interfaces for initialization, loading and showing ads.
+    /// </summary>
     public class SDAdsManager : IUnityAdsLoadListener, IUnityAdsShowListener, IUnityAdsInitializationListener
     {
         private bool isInterstitialLoaded;

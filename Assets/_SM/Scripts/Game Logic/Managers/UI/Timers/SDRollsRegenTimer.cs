@@ -7,6 +7,9 @@ using TMPro;
 
 namespace SD_UI
 {
+    /// <summary>
+    /// Responsible for managing roll regeneration over time, and displaying the remaining time for the next roll regeneration.
+    /// </summary>
     public class SDRollsRegenTimer : SDLogicMonoBehaviour
     {
         [SerializeField] private TMP_Text rollRegenerationTimerText;
@@ -37,6 +40,10 @@ namespace SD_UI
             ActivateRollRegenerationAfterPause();
         }
 
+        /// <summary>
+        /// Handles pause and unpause of roll regeneration.
+        /// </summary>
+        /// <param name="pauseStatus">The new pause status.</param>
         private void HandlePause(object pauseStatus)
         {
             bool isPaused = (bool)pauseStatus;
@@ -76,6 +83,10 @@ namespace SD_UI
             rollRegenerationTimerText.text = $"+{ROLLS_REGEN_AMOUNT} Rolls in {SDExtension.GetFormattedTimeSpan(remainingDuration)}";
         }
 
+        /// <summary>
+        /// Resumes roll regeneration after a pause.
+        /// </summary>
+        /// <param name="obj">Unused parameter.</param>
         public void ActivateRollRegenerationAfterPause(object obj = null)
         {
             int offlineTime = Manager.TimerManager.GetLastOfflineTimeSeconds();

@@ -2,6 +2,9 @@ using SD_Core;
 
 namespace SD_GameLoad
 {
+    /// <summary>
+    /// Handles the management of player data.
+    /// </summary>
     public class SDPlayerDataManager
     {
         public SDPlayer PlayerData { get; private set; }
@@ -32,7 +35,7 @@ namespace SD_GameLoad
             PlayerData = data;
             if (PlayerData?.PlayerInfo != null)
             {
-                SDDebug.Log("Player Data Loaded: LEVEL :" + PlayerData.PlayerInfo.Level);
+                SDDebug.Log("Player Data Loaded");
             }
             else
             {
@@ -45,7 +48,7 @@ namespace SD_GameLoad
             PlayerData = configData;
             if (PlayerData?.PlayerInfo != null)
             {
-                SDDebug.Log("Player Data Loaded: LEVEL :" + PlayerData.PlayerInfo.Level);
+                SDDebug.Log("Player Data Loaded");
             }
             else
             {

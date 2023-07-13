@@ -2,6 +2,9 @@ using SD_Core;
 
 namespace SD_GameLoad
 {
+    /// <summary>
+    /// Represents the data related to a player.
+    /// </summary>
     public class SDPlayerData
     {
         public int Level { get; set; }
@@ -15,6 +18,10 @@ namespace SD_GameLoad
         public bool IsRollRegenOn { get; set; }
         public int ExtraRolls { get; set; }
 
+
+        /// <summary>
+        /// Initializes a new instance of the SDPlayerData class.
+        /// </summary>
         public SDPlayerData(int level, double totalXP, double currentXP, int maxRolls, int currentRolls, int abilityPoints, int rollRegenDuration, int rollRegenCurrentDuration, bool isRollRegenOn, int extraRolls)
         {
             Level = level;

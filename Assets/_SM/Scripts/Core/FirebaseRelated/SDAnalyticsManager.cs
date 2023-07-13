@@ -4,18 +4,31 @@ using UnityEngine.Device;
 
 namespace SD_Core
 {
+    /// <summary>
+    /// Class used to report analytics data to Firebase Analytics.
+    /// </summary>
     public class SDAnalyticsManager
     {
-        public SDAnalyticsManager()
-        {
-            SetUserID();
-        }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SDAnalyticsManager"/> class.
+        /// </summary>
+        public SDAnalyticsManager() => SetUserID();
+
+        /// <summary>
+        /// Reports an event with a specific type to Firebase Analytics.
+        /// </summary>
+        /// <param name="eventType">The type of the event.</param>
         public void ReportEvent(SDEventType eventType)
         {
             ReportEvent(eventType, new Dictionary<SDDataKeys, object>());
         }
 
+        /// <summary>
+        /// Reports an event with a specific type and additional data to Firebase Analytics.
+        /// </summary>
+        /// <param name="eventType">The type of the event.</param>
+        /// <param name="data">The additional data associated with the event.</param>
         public void ReportEvent(SDEventType eventType, Dictionary<SDDataKeys, object> data)
         {
             var paramsData = new List<Parameter>();
@@ -51,6 +64,10 @@ namespace SD_Core
             FirebaseAnalytics.LogEvent(eventType.ToString(), paramsData.ToArray());
         }
 
+        /// <summary>
+        /// Sets the user properties to Firebase Analytics.
+        /// </summary>
+        /// <param name="data">A dictionary containing the property names and values.</param>
         public void SetUserProperties(Dictionary<string, string> data)
         {
             foreach (var keyVal in data)
@@ -59,25 +76,33 @@ namespace SD_Core
             }
         }
 
+        /// <summary>
+        /// Sets a user property to Firebase Analytics.
+        /// </summary>
+        /// <param name="key">The name of the property.</param>
+        /// <param name="val">The value of the property.</param>
         public void SetUserProperty(string key, string val)
         {
             FirebaseAnalytics.SetUserProperty(key, val);
         }
 
-        public void SetUserID()
+        /// <summary>
+        /// Sets the user ID to the unique identifier of the device.
+        /// </summary>
+        private void SetUserID()
         {
             FirebaseAnalytics.SetUserId(SystemInfo.deviceUniqueIdentifier);
         }
     }
 
+    /// <summary>
+    /// Enumerates the possible types of events that can be reported.
+    /// </summary>
     public enum SDEventType
     {
         app_loaded,
         upgrade_item,
         try_upgrade_out_of,
-        popup_open,
-        popup_impression,
-        popup_close,
         ad_show_start,
         ad_show_click,
         ad_show_complete,
@@ -85,10 +110,12 @@ namespace SD_Core
         product_unknown,
         purchase_failed,
         unity_services_failed,
-        hire_baker,
         boss_killed
     }
 
+    /// <summary>
+    /// Enumerates the possible keys of the data that can be reported.
+    /// </summary>
     public enum SDDataKeys
     {
         type_id,
@@ -97,5 +124,4 @@ namespace SD_Core
         product_id,
         product_receipt
     }
-
 }

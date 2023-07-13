@@ -3,6 +3,9 @@ using SD_Core;
 
 namespace SD_GameLoad
 {
+    /// <summary>
+    /// Controller class for handling game logic related to boss characters.
+    /// </summary>
     public class SDBossController
     {
         private const double SPECIAL_LEVEL_INCREASE_FACTOR = 1.1525;
@@ -53,7 +56,7 @@ namespace SD_GameLoad
 
             if (currentBoss == null)
             {
-                Debug.LogError("No current boss data available.");
+                Debug.Log("No current boss data available.");
                 return;
             }
 

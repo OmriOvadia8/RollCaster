@@ -9,6 +9,9 @@ using SD_Ability;
 namespace SD_Test
 {
 #if UNITY_EDITOR
+    /// <summary>
+    /// A class for conducting various testing operations within the Unity editor.
+    /// </summary>
     public class SDTest : SDLogicMonoBehaviour
     {
         [SerializeField] Image healthBar;

@@ -116,6 +116,10 @@ namespace SD_GameLoad
 
         #region Player Points
 
+        /// <summary>
+        /// Awards ability points to the player based on the specified event.
+        /// </summary>
+        /// <param name="pointsEvent">The event that triggered the awarding of points.</param>
         public void EarnAbilityPoints(PointsEarnTypes pointsEvent)
         {
             switch (pointsEvent)

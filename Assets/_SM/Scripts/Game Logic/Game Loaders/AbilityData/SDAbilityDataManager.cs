@@ -3,6 +3,9 @@ using System;
 
 namespace SD_GameLoad
 {
+    /// <summary>
+    /// Handles the management of ability data.
+    /// </summary>
     public class SDAbilityDataManager
     {
         public const string ABILITIES_CONFIG = "abilities";

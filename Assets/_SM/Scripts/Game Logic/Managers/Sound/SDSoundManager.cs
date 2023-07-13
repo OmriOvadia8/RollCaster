@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 namespace SD_Sound
 {
+    /// <summary>
+    /// Manages the sound effects of the game, including button clicks, and allows muting and unmuting of all sounds.
+    /// </summary>
     public class SDSoundManager : SDLogicMonoBehaviour
     {
         [SerializeField] private List<AudioScriptable> audioAssets;
@@ -21,6 +24,10 @@ namespace SD_Sound
 
         private void OnDisable() => RemoveListener(SDEventNames.PlaySound, PlaySound);
 
+        /// <summary>
+        /// Plays the sound specified in the input argument, if it is of type SoundEffectType and exists in the audio dictionary.
+        /// </summary>
+        /// <param name="sound">The sound to play. This object must be castable to SoundEffectType.</param>
         private void PlaySound(object sound)
         {
             if (sound is SoundEffectType effectType)
@@ -40,6 +47,9 @@ namespace SD_Sound
             }
         }
 
+        /// <summary>
+        /// Initializes the audio dictionary with the data from the serialized audio assets list.
+        /// </summary>
         private void InitializeAudioDictionary()
         {
             audioAssetDict = new Dictionary<SoundEffectType, AudioScriptable>();
@@ -59,6 +69,7 @@ namespace SD_Sound
 
         public void ButtonClickSound() => PlaySound(SoundEffectType.ButtonClick);
 
+        #region Mute
         public void ToggleMute()
         {
             AudioListener.volume = AudioListener.volume == 0 ? 1 : 0;
@@ -74,6 +85,7 @@ namespace SD_Sound
                 buttonImage.sprite = muteSprite;
             }
         }
+        #endregion
     }
 
     public enum SoundEffectType

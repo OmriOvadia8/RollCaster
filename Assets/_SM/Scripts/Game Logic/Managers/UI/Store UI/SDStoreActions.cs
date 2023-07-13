@@ -1,13 +1,17 @@
 using SD_GameLoad;
 using SD_Core;
-using UnityEngine;
 
 namespace SD_UI
 {
+    /// <summary>
+    /// The SDStoreActions class handles the in-app purchases and ad watching reward within the game.
+    /// </summary>
     public class SDStoreActions : SDLogicMonoBehaviour
     {
-        [SerializeField] GameObject failedToLoadWindow;
-
+        /// <summary>
+        /// Handles the in-app purchase of rolls based on the product index.
+        /// </summary>
+        /// <param name="productIndex">The index of the product in the store's product list.</param>
         public void IAPRollsPurchase(int productIndex)
         {
             var storeData = GameLogic.StoreManager.GetStoreByStoreID("1");
@@ -29,6 +33,10 @@ namespace SD_UI
             });
         }
 
+        /// <summary>
+        /// Allows the player to watch an ad in exchange for a specified amount of rolls.
+        /// </summary>
+        /// <param name="rollsAmount">The amount of rolls the player receives after watching the ad.</param>
         public void WatchAdForRolls(int rollsAmount)
         {
             if (Manager.AdsManager.IsRewardedAdReady())

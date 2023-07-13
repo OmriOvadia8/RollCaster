@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace SD_Core
 {
+    /// <summary>
+    /// Manages the game time and schedules tasks.
+    /// </summary>
     public class SDTimeManager
     {
         private bool isLooping;
@@ -19,6 +22,9 @@ namespace SD_Core
         private int alarmCounter;
         private int offlineSeconds;
 
+        /// <summary>
+        /// Creates a new instance of SDTimeManager and initializes the timers.
+        /// </summary>
         public SDTimeManager()
         {
             _ = TimerLoop();
@@ -69,6 +75,10 @@ namespace SD_Core
             SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.OfflineTimeRefreshed, offlineSeconds);
         }
 
+        /// <summary>
+        /// Gets the number of seconds the user was offline last time.
+        /// </summary>
+        /// <returns>Number of seconds the user was offline.</returns>
         public int GetLastOfflineTimeSeconds()
         {
             return offlineSeconds;

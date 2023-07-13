@@ -5,6 +5,9 @@ using System;
 
 namespace SD_Boss
 {
+    /// <summary>
+    /// Handles HP regeneration for the boss, including saving and loading of HP regen duration data.
+    /// </summary>
     public class SDBossHPRegenController : SDLogicMonoBehaviour
     {
         private const string HP_TWEEN = "hp";
@@ -31,6 +34,10 @@ namespace SD_Boss
             ActivateHPRegenerationAfterPause();
         }
 
+        /// <summary>
+        /// Handles the pause event by stopping or starting HP regeneration.
+        /// </summary>
+        /// <param name="pauseStatus">The current pause status.</param>
         private void HandlePause(object pauseStatus)
         {
             bool isPaused = (bool)pauseStatus;

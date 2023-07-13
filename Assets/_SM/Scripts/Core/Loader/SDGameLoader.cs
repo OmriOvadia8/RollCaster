@@ -4,6 +4,9 @@ using System.Collections;
 
 namespace SD_Core
 {
+    /// <summary>
+    /// Manages the loading and initialization of the game.
+    /// </summary>
     public class SDGameLoader : SDMonoBehaviour
     {
         [SerializeField] private SDGameLoaderBase gameLogicLoader;
@@ -14,6 +17,9 @@ namespace SD_Core
             StartCoroutine(DelayStartCoroutine());
         }
 
+        /// <summary>
+        /// Starts the game initialization process with a delay.
+        /// </summary>
         private IEnumerator DelayStartCoroutine()
         {
             yield return new WaitForSeconds(1);

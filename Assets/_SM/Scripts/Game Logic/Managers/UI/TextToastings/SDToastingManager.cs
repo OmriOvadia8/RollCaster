@@ -5,6 +5,9 @@ using SD_Sound;
 
 namespace SD_UI
 {
+    /// <summary>
+    /// The class is responsible for managing and displaying different types of toasts within the game.
+    /// </summary>
     public class SDToastingManager : SDMonoBehaviour
     {
         [SerializeField] private RectTransform damageToastPosition;
@@ -35,6 +38,11 @@ namespace SD_UI
 
         private void Start() => MoneyToastPoolInitialization();
 
+        /// <summary>
+        /// Display a text toast with the specified amount and poolName.
+        /// </summary>
+        /// <param name="amount">The value to be displayed on the toast.</param>
+        /// <param name="poolName">The name of the pool from which the toast object should be retrieved.</param>
         public void DisplayTextToast(double amount, PoolNames poolName)
         {
             var textToast = (SDTextToast)Manager.PoolManager.GetPoolable(poolName);
@@ -113,6 +121,9 @@ namespace SD_UI
             return new Vector3(damageToastPosition.position.x + x, damageToastPosition.position.y + y, damageToastPosition.position.z);
         }
 
+        /// <summary>
+        /// Initializes all required toast pools with the given parameters.
+        /// </summary>
         private void MoneyToastPoolInitialization()
         {
             Manager.PoolManager.InitPool(nameof(PoolNames.DamageAnim1), frequentTextToastAmount, damageToastPosition);
