@@ -7,9 +7,9 @@ namespace SD_GameLoad
     /// </summary>
     public class SDPlayerController
     {
-        private const double TOTAL_XP_MULTIPLIER_INCREASE = 1.2;
-        private const int EXTRA_BOSS_POINTS = 10;
-        private const int NORMAL_KILL_POINTS = 3;
+        private const double TOTAL_XP_MULTIPLIER_INCREASE = 1.18;
+        private const int NORMAL_KILL_POINTS = 2;
+        private const int BONUS_GAINED_LEVEL = 5;
         private bool hasLeveledUp;
         private SDPlayerData PlayerInfo => SDGameLogic.Instance.Player.PlayerData.PlayerInfo;
 
@@ -122,15 +122,19 @@ namespace SD_GameLoad
         /// <param name="pointsEvent">The event that triggered the awarding of points.</param>
         public void EarnAbilityPoints(PointsEarnTypes pointsEvent)
         {
+            int levelGroup = PlayerInfo.Level / BONUS_GAINED_LEVEL;
+            int levelUpPoints = BONUS_GAINED_LEVEL + (BONUS_GAINED_LEVEL * levelGroup);
+            int normalKillPoints = NORMAL_KILL_POINTS + (NORMAL_KILL_POINTS * levelGroup);
+
             switch (pointsEvent)
             {
                 case PointsEarnTypes.LevelUp:
-                    PlayerInfo.AbilityPoints += EXTRA_BOSS_POINTS;
-                    SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.EarnPointsToast, EXTRA_BOSS_POINTS);
+                    PlayerInfo.AbilityPoints += levelUpPoints;
+                    SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.EarnPointsToast, levelUpPoints);
                     break;
                 case PointsEarnTypes.BossKill:
-                    PlayerInfo.AbilityPoints += NORMAL_KILL_POINTS;
-                    SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.EarnPointsToast, NORMAL_KILL_POINTS);
+                    PlayerInfo.AbilityPoints += normalKillPoints;
+                    SDManager.Instance.EventsManager.InvokeEvent(SDEventNames.EarnPointsToast, normalKillPoints);
                     break;
             }
 

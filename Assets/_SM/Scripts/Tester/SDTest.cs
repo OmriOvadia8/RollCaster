@@ -110,6 +110,14 @@ namespace SD_Test
             {
                 GameLogic.PlayerController.AddPlayerXP(XPCheat);
             }
+            if (Input.GetKeyDown(KeyCode.F9))
+            {
+                GameLogic.PlayerController.IncreaseRoll(30);
+            }
+            if (Input.GetKeyDown(KeyCode.F10))
+            {
+                GameLogic.BossController.DamageBoss(30000);
+            }
         }
 
         public void TakeDamage(double damage)

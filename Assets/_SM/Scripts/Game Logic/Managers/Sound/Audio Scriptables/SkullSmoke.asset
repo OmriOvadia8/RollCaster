@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectType: 1
   clip: {fileID: 8300000, guid: fa4f8350e6d7a244c89eb50297784b7a, type: 3}
-  volume: 0.9
+  volume: 1
