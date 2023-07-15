@@ -9,7 +9,7 @@ namespace SD_Quest
     public class SDQuestsManager : SDLogicMonoBehaviour
     {
         public const int BOSS_INTERVAL = 5;
-        private const int ROLL_REWARD = 15;
+        private const int ROLL_REWARD = 10;
 
         private void OnEnable() => AddListener(SDEventNames.BossQuest, DefeatBossQuest);
 

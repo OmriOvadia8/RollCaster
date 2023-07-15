@@ -2559,7 +2559,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Reward: 15 Rolls
+  m_text: 'Reward: 10 Rolls
 
 '
   m_isRightToLeft: 0

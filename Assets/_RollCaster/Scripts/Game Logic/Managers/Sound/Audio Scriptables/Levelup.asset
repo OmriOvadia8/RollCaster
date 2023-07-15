@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74af8d8ad16db3e49ade7daa0964b4bf, type: 3}
-  m_Name: Slashes
+  m_Name: Levelup
   m_EditorClassIdentifier: 
-  effectType: 2
-  clip: {fileID: 8300000, guid: 178a84eb48c5e94469636e74186b898f, type: 3}
-  volume: 0.33
+  effectType: 10
+  clip: {fileID: 8300000, guid: b6b1ca5fcbcc81943b981bb26b6519e0, type: 3}
+  volume: 0.25
