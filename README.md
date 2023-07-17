@@ -1,6 +1,6 @@
 # RollCaster
 
-#Download On Google Play
+Download On Google Play: 
 https://play.google.com/store/apps/details?id=com.omri.slotsdestiny
 
 # Summary
